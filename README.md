@@ -9,6 +9,8 @@ sPGetEmployeeDepartments
 
 
 =========================================================
+
+
 CREATE TABLE [dbo].[EMPLOYEE](
 	[EmployeeId] [int] IDENTITY(1,1) PRIMARY KEY ,
 	[EmployeeName] [varchar](255) NULL,
@@ -20,7 +22,7 @@ CREATE TABLE [dbo].[EMPLOYEE](
 ) ON [PRIMARY]
 GO
 
-CREATE TABLE DEPARTMENT
+CREATE TABLE [dbo].[DEPARTMENT]
 (
 	DepartmentId INT,
 	Code	VARCHAR(255),
@@ -68,3 +70,8 @@ exec sPGetEmployeeDepartments
 
 
 =============================================================
+In web.config file, update the following according to your machine: (FOR DB server connection)
+<add name="EMS" connectionString="Server = LCG-VIKASMISHRA; Database = EMPT; Integrated Security = true;" />
+
+Once done,
+Run the project and proceed with creating employee
