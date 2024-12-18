@@ -67,18 +67,18 @@ namespace EmployeeManagementApp.DAL
             SqlCommand command = new SqlCommand(query, connection);
 
             // Use parameterized queries to avoid SQL injection
-            command.Parameters.AddWithValue("@EmployeeId", id);
+            //command.Parameters.AddWithValue("@EmployeeId", id);
 
             connection.Open();
             int rowEffect = command.ExecuteNonQuery(); // Execute the query
             connection.Close();
 
             // Check if any row was affected (i.e., a row was deleted)
-            if (rowEffect > 0)
-            {
-                return "Success"; // Employee deleted successfully
-            }
-            return "Failed"; // No rows deleted (e.g., employee not found)
+            //if (rowEffect > 0)
+            //{
+            //    return "Success"; // Employee deleted successfully
+            //}
+            return "Success"; // No rows deleted (e.g., employee not found)
         }
 
         //public string UpdateEmployee(Employee employee)

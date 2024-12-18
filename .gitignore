@@ -1,3 +1,4 @@
 .vs
-/obj/Release/EmployeeManagementApp.csproj.AssemblyReference.cache
-obj
+/obj
+/bin
+/packages

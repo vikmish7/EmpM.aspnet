@@ -22,7 +22,7 @@ namespace EmployeeManagementApp.Controllers
         public ActionResult Create()
         {
             DepartmentManager dm = new DepartmentManager();
-            var departments=dm.GetDepartments();
+            var departments = dm.GetDepartments();
             return View(departments);
         }
         public ActionResult Delete()
@@ -37,23 +37,34 @@ namespace EmployeeManagementApp.Controllers
         {
             Employee emp = new Employee(employee.Name, employee.Designation, employee.NID,employee.JoiningDate, employee.DepartmentId, employee.BloodGroup);
            string isSaved= em.SaveEmployee(emp);
-              ViewBag.IsSaved = isSaved;
-             DepartmentManager dm = new DepartmentManager();
-             var departments = dm.GetDepartments();
-            // return RedirectToAction("Index");
-            return View(departments);
+            ViewBag.IsSaved = isSaved;
+
+            if (isSaved.Length > 0)
+            {
+                // Redirect to the "About" view upon success.
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // Optionally set a ViewBag property to show an error message.
+                ViewBag.IsSaved = "Error";
+                DepartmentManager dm = new DepartmentManager();
+                var departments = dm.GetDepartments();
+                return View(departments);
+            }
+            //return RedirectToAction("Index");
+            //return View(departments);
         }
 
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Employee emp)
         {
             //Employee emp = new Employee(employee.Name, employee.Designation, employee.NID, employee.JoiningDate, employee.DepartmentId, employee.BloodGroup);
-            string isSaved = em.DeleteEmployee(id);
-            ViewBag.IsSaved = isSaved;
-            DepartmentManager dm = new DepartmentManager();
-            var departments = dm.GetDepartments();
-            // return RedirectToAction("Index");
-            return View(departments);
+            string isSaved = em.DeleteEmployee(emp.EmployeeId);
+            
+       
+            return RedirectToAction("Index");
+            //return View(departments);
         }
     }
 }

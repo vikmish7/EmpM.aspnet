@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Create EMP</h2>
 
 
 <form method="post">
@@ -50,9 +50,9 @@
 
 </form>
 @{
-    if (ViewBag.IsSaved=="SuccessFull")
+    if (ViewBag.IsSaved== "Error")
     {
-       <h4>Employee inserted Successfully</h4>
+       <h2 style="color:red">Employee inserted ERROR</h2>
     }
    
 }
