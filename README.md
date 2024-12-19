@@ -6,11 +6,9 @@ A simple ASP.NET application to manage employees and departments.
 
 ## Table of Contents
 
-1. [Project Setup](#project-setup)
-2. [Database Configuration](#database-configuration)
-3. [Running the Application](#running-the-application)
-4. [Troubleshooting](#troubleshooting)
-5. [About](#about)
+1. [Project Setup]
+2. [Database Configuration]
+3. [Running the Application]
 
 ---
 
@@ -22,23 +20,29 @@ A simple ASP.NET application to manage employees and departments.
 - Visual Studio with ASP.NET support
 - .NET Framework installed on your system
 
-### Steps
-
 1. Clone the repository:
    ```bash
    git clone https://github.com/vikmish7/EmpM.aspnet.git
    cd EmpM.aspnet
-Open the solution file EmployeeManagementApp.sln in Visual Studio.
+2. Open the solution file EmployeeManagementApp.sln in Visual Studio.
+3. Configure your database connection in the Web.config file (refer to Database Configuration).
 
-Configure your database connection in the Web.config file (refer to Database Configuration).
+### Database Configuration
+-Open SSMS and connect to your local database server.
+-Run the following SQL scripts to set up the database, tables, and stored procedures.
+-SQL Script for Tables and Procedures
+-Copy and execute the following SQL script in SSMS:
 
-Database Configuration
-Open SSMS and connect to your local database server.
+4. Web config file changes for db on root level
+  <connectionStrings>
+    <add name="EMS" connectionString="Server = LCG-VIKASMISHRA; Database = EMPT; Integrated Security = true;" />
+  </connectionStrings>
+<connectionStrings>
+    <add name="EMS" connectionString="Server =YOUR_SERVER_NAME;Database =YOUR_DATABASE_NAME;Integrated Security=True;" />
+</connectionStrings>
 
-Run the following SQL scripts to set up the database, tables, and stored procedures.
-
-SQL Script for Tables and Procedures
-Copy and execute the following SQL script in SSMS:
+### Running the Application
+After completing the setup, press F5 in Visual Studio to run the application.
 
 ```sql
 BEGIN TRY
@@ -277,14 +281,41 @@ EXEC dbo.DeleteEmployee
 EXEC dbo.DeleteDepartment
     @DepartmentId = 1;
 
+USE [EMPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sPGetEmployeeDepartments]    Script Date: 19-12-2024 18:43:17 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sPGetEmployeeDepartments]
+	AS
+BEGIN
+	SET NOCOUNT ON;
+ 
+	SELECT E.*,D.Code,D.DName as DepartmentName FROM dbo.EMPLOYEE E
+	INNER JOIN DEPARTMENT D
+	ON E.DepartmentId=D.DepartmentId
+ 
+    
+END
+EXEC [dbo].[sPGetEmployeeDepartments]
 
+USE [EMPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sPGetDepartments]    Script Date: 19-12-2024 18:44:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 
+ALTER PROCEDURE [dbo].[sPGetDepartments]
+	AS
+BEGIN
+	SET NOCOUNT ON;
+ 
+	SELECT * FROM dbo.DEPARTMENT
+END
 
-```Web config changes for db
-<connectionStrings>
-    <add name="DefaultConnection" connectionString="Data Source=YOUR_SERVER_NAME;Initial Catalog=YOUR_DATABASE_NAME;Integrated Security=True;" providerName="System.Data.SqlClient" />
-</connectionStrings>
-Replace YOUR_SERVER_NAME and YOUR_DATABASE_NAME with your actual SQL Server details.
+EXEC [dbo].[sPGetEmployeeDepartments]
 
-Running the Application
-After completing the setup, press F5 in Visual Studio to run the application.
