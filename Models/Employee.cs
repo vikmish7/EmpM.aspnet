@@ -8,7 +8,7 @@ namespace EmployeeManagementApp.Models
     public class Employee
     {
         public int EmployeeId { get; set; }
-        public string Name { get; set; }
+        public string EmployeeName { get; set; }
         public string Designation { get; set; }
         public string NID { set; get; }
         public DateTime JoiningDate { get; set; }
@@ -22,7 +22,7 @@ namespace EmployeeManagementApp.Models
 
         public Employee(string name, string designation, string NID, DateTime joiningDate, int dept, string bloodGroup)
         {
-            Name = name;
+            EmployeeName = name;
             Designation = designation;
             this.NID = NID;
             JoiningDate = joiningDate;

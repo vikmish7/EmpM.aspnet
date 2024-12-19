@@ -16,27 +16,34 @@ namespace EmployeeManagementApp.Controllers
         EmployeeDepartmentManager edm = new EmployeeDepartmentManager();
         public ActionResult Index()
         {
+            // Fetch employees with their department details
             List<EmployeeDepartmentViewModel> employeeDepartmentList = edm.GetAllEmployeeDepartment();
+
+            // Fetch departments for dropdowns
+            DepartmentManager dm = new DepartmentManager();
+            var departments = dm.GetDepartments();
+
+            // Pass departments to the view via ViewBag
+            ViewBag.Departments = departments;
+
+            // Return the employee list to the view
             return View(employeeDepartmentList);
         }
+
         public ActionResult Create()
         {
             DepartmentManager dm = new DepartmentManager();
             var departments = dm.GetDepartments();
             return View(departments);
         }
-        public ActionResult Delete()
-        {
-            DepartmentManager dm = new DepartmentManager();
-            var departments = dm.GetDepartments();
-            return View(departments);
-        }
+
 
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
-            Employee emp = new Employee(employee.Name, employee.Designation, employee.NID,employee.JoiningDate, employee.DepartmentId, employee.BloodGroup);
-           string isSaved= em.SaveEmployee(emp);
+
+            Employee emp = new Employee(employee.EmployeeName, employee.Designation, employee.NID, employee.JoiningDate, employee.DepartmentId, employee.BloodGroup);
+            string isSaved = em.SaveEmployee(emp);
             ViewBag.IsSaved = isSaved;
 
             if (isSaved.Length > 0)
@@ -55,16 +62,56 @@ namespace EmployeeManagementApp.Controllers
             //return RedirectToAction("Index");
             //return View(departments);
         }
-
-        [HttpDelete]
-        public ActionResult Delete(Employee emp)
+        public ActionResult Delete(int id)
         {
+            Console.WriteLine("Calling stored procedure: DeleteEmployee with EmployeeId = xxxxxxx"); // Log stored procedure call
+            System.Diagnostics.Debug.WriteLine("Calling stored procedure: DeleteEmployee with EmployeeId = xxxxxxx");
+            Console.WriteLine("Calling stored procedure: DeleteEmployee with EmployeeId = " + id); // Log stored procedure call
+            System.Diagnostics.Debug.WriteLine("Calling stored procedure: DeleteEmployee with EmployeeId = xxxxxxx" + id);
+
             //Employee emp = new Employee(employee.Name, employee.Designation, employee.NID, employee.JoiningDate, employee.DepartmentId, employee.BloodGroup);
-            string isSaved = em.DeleteEmployee(emp.EmployeeId);
-            
-       
+            string isSaved = em.DeleteEmployee(id);
+
+            return RedirectToAction("Index");
+            //DepartmentManager dm = new DepartmentManager();
+            //var departments = dm.GetDepartments();
+            //return View(departments);
+        }
+        [HttpDelete]
+        public ActionResult Deletez(int id)
+        {
+            Console.WriteLine("Calling stored procedure: DeleteEmployee with EmployeeId = " + id); // Log stored procedure call
+            System.Diagnostics.Debug.WriteLine("Calling stored procedure: DeleteEmployee with EmployeeId = xxxxxxx" + id);
+
+            //Employee emp = new Employee(employee.Name, employee.Designation, employee.NID, employee.JoiningDate, employee.DepartmentId, employee.BloodGroup);
+            string isSaved = em.DeleteEmployee(id);
+
             return RedirectToAction("Index");
             //return View(departments);
         }
+
+        [HttpPost]
+        public JsonResult Edit(Employee employee)
+        {
+            try
+            {
+                // Ensure EmployeeId is passed and used in the update process
+                string result = em.UpdateEmployee(employee); // Assuming this method requires EmployeeId
+
+                if (result == "Success")
+                {
+                    return Json("Success");
+                }
+                return Json("Failed");
+            }
+            catch (Exception ex)
+            {
+                return Json("Error: " + ex.Message);
+            }
+        }
+
+
+
     }
 }
+

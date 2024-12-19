@@ -25,7 +25,7 @@ namespace EmployeeManagementApp.DAL
             {
                 int deptId = Convert.ToInt32(reader["DepartmentId"]);
                 string code = reader["Code"].ToString();
-                string name = reader["Name"].ToString();
+                string name = reader["DName"].ToString();
 
                 Department departs = new Department(deptId, code, name);
                 departmentList.Add(departs);

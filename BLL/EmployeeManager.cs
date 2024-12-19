@@ -25,5 +25,11 @@ namespace EmployeeManagementApp.BLL
             return gateway.DeleteEmployees(id);
 
         }
+
+        public string UpdateEmployee(Employee employee)
+        {
+
+            return gateway.UpdateEmployees(employee);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace EmployeeManagementApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Employee Mgmt app.";
 
             return View();
         }
