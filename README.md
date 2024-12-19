@@ -1,42 +1,60 @@
-# EmpM.aspnet
+# Employee Management Application
 
-For DB setup in SSMS, once connected to local DB and server started , create new query as below and execute them
+A simple ASP.NET application to manage employees and departments.
 
+---
 
-=========================================================
+## Table of Contents
+
+1. [Project Setup](#project-setup)
+2. [Database Configuration](#database-configuration)
+3. [Running the Application](#running-the-application)
+4. [Troubleshooting](#troubleshooting)
+5. [About](#about)
+
+---
+
+## Project Setup
+
+### Prerequisites
+
+- Microsoft SQL Server Management Studio (SSMS)
+- Visual Studio with ASP.NET support
+- .NET Framework installed on your system
+
+### Steps
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vikmish7/EmpM.aspnet.git
+   cd EmpM.aspnet
+Open the solution file EmployeeManagementApp.sln in Visual Studio.
+
+Configure your database connection in the Web.config file (refer to Database Configuration).
+
+Database Configuration
+Open SSMS and connect to your local database server.
+
+Run the following SQL scripts to set up the database, tables, and stored procedures.
+
+SQL Script for Tables and Procedures
+Copy and execute the following SQL script in SSMS:
+
+sql
+Copy code
 BEGIN TRY
-    -- Drop Employee Table if it exists
-    IF OBJECT_ID('dbo.Employee', 'U') IS NOT NULL
-        DROP TABLE dbo.Employee;
+    -- Drop existing tables and procedures if they exist
+    IF OBJECT_ID('dbo.Employee', 'U') IS NOT NULL DROP TABLE dbo.Employee;
+    IF OBJECT_ID('dbo.Department', 'U') IS NOT NULL DROP TABLE dbo.Department;
 
-    -- Drop Department Table if it exists
-    IF OBJECT_ID('dbo.Department', 'U') IS NOT NULL
-        DROP TABLE dbo.Department;
-
-    -- Drop Procedures if they exist
-    IF OBJECT_ID('dbo.InsertEmployee', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.InsertEmployee;
-
-    IF OBJECT_ID('dbo.InsertDepartment', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.InsertDepartment;
-
-    IF OBJECT_ID('dbo.GetEmployees', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.GetEmployees;
-
-    IF OBJECT_ID('dbo.GetDepartments', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.GetDepartments;
-
-    IF OBJECT_ID('dbo.UpdateEmployee', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.UpdateEmployee;
-
-    IF OBJECT_ID('dbo.UpdateDepartment', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.UpdateDepartment;
-
-    IF OBJECT_ID('dbo.DeleteEmployee', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.DeleteEmployee;
-
-    IF OBJECT_ID('dbo.DeleteDepartment', 'P') IS NOT NULL
-        DROP PROCEDURE dbo.DeleteDepartment;
+    IF OBJECT_ID('dbo.InsertEmployee', 'P') IS NOT NULL DROP PROCEDURE dbo.InsertEmployee;
+    IF OBJECT_ID('dbo.InsertDepartment', 'P') IS NOT NULL DROP PROCEDURE dbo.InsertDepartment;
+    IF OBJECT_ID('dbo.GetEmployees', 'P') IS NOT NULL DROP PROCEDURE dbo.GetEmployees;
+    IF OBJECT_ID('dbo.GetDepartments', 'P') IS NOT NULL DROP PROCEDURE dbo.GetDepartments;
+    IF OBJECT_ID('dbo.UpdateEmployee', 'P') IS NOT NULL DROP PROCEDURE dbo.UpdateEmployee;
+    IF OBJECT_ID('dbo.UpdateDepartment', 'P') IS NOT NULL DROP PROCEDURE dbo.UpdateDepartment;
+    IF OBJECT_ID('dbo.DeleteEmployee', 'P') IS NOT NULL DROP PROCEDURE dbo.DeleteEmployee;
+    IF OBJECT_ID('dbo.DeleteDepartment', 'P') IS NOT NULL DROP PROCEDURE dbo.DeleteDepartment;
 
     -- Create Employee Table
     CREATE TABLE dbo.Employee (
@@ -55,18 +73,10 @@ BEGIN TRY
         Code VARCHAR(255),
         DNAME VARCHAR(50)
     );
-PRINT 'All Tables created successfully.';
-END TRY
-BEGIN CATCH
-    PRINT 'Error occurred: ' + ERROR_MESSAGE();
-END CATCH;
 
-	GO
+    PRINT 'Tables created successfully.';
 
-BEGIN TRY
-   -- Create Insert Employee Procedure
-    DECLARE @sql NVARCHAR(MAX);
-    SET @sql = N'
+    -- Create Insert Employee Procedure
     CREATE PROCEDURE dbo.InsertEmployee
         @EmployeeName VARCHAR(50),
         @Designation VARCHAR(30),
@@ -78,11 +88,9 @@ BEGIN TRY
     BEGIN
         INSERT INTO dbo.Employee (EmployeeName, Designation, NID, BloodGroup, JoiningDate, DepartmentId)
         VALUES (@EmployeeName, @Designation, @NID, @BloodGroup, @JoiningDate, @DepartmentId);
-    END;';
-    EXEC sp_executesql @sql;
+    END;
 
     -- Create Insert Department Procedure
-    SET @sql = N'
     CREATE PROCEDURE dbo.InsertDepartment
         @DepartmentId INT,
         @Code VARCHAR(255),
@@ -91,11 +99,9 @@ BEGIN TRY
     BEGIN
         INSERT INTO dbo.Department (DepartmentId, Code, DNAME)
         VALUES (@DepartmentId, @Code, @DNAME);
-    END;';
-    EXEC sp_executesql @sql;
+    END;
 
     -- Create Retrieve Employees Procedure
-    SET @sql = N'
     CREATE PROCEDURE dbo.GetEmployees
         @EmployeeId INT = NULL,
         @EmployeeName VARCHAR(50) = NULL,
@@ -104,13 +110,11 @@ BEGIN TRY
     BEGIN
         SELECT * FROM dbo.Employee
         WHERE (@EmployeeId IS NULL OR EmployeeId = @EmployeeId)
-          AND (@EmployeeName IS NULL OR EmployeeName LIKE ''%'' + @EmployeeName + ''%'')
-          AND (@Designation IS NULL OR Designation LIKE ''%'' + @Designation + ''%'');
-    END;';
-    EXEC sp_executesql @sql;
+          AND (@EmployeeName IS NULL OR EmployeeName LIKE '%' + @EmployeeName + '%')
+          AND (@Designation IS NULL OR Designation LIKE '%' + @Designation + '%');
+    END;
 
     -- Create Retrieve Departments Procedure
-    SET @sql = N'
     CREATE PROCEDURE dbo.GetDepartments
         @DepartmentId INT = NULL,
         @Code VARCHAR(255) = NULL
@@ -118,170 +122,48 @@ BEGIN TRY
     BEGIN
         SELECT * FROM dbo.Department
         WHERE (@DepartmentId IS NULL OR DepartmentId = @DepartmentId)
-          AND (@Code IS NULL OR Code LIKE ''%'' + @Code + ''%'');
-    END;';
-    EXEC sp_executesql @sql;
+          AND (@Code IS NULL OR Code LIKE '%' + @Code + '%');
+    END;
 
-    -- Create Update Employee Procedure
-    SET @sql = N'
-    CREATE PROCEDURE dbo.UpdateEmployee
-        @EmployeeId INT,
-        @EmployeeName VARCHAR(50) = NULL,
-        @Designation VARCHAR(30) = NULL,
-        @NID VARCHAR(20) = NULL,
-        @BloodGroup VARCHAR(5) = NULL,
-        @JoiningDate DATETIME = NULL,
-        @DepartmentId INT = NULL
-    AS
-    BEGIN
-        UPDATE dbo.Employee
-        SET EmployeeName = COALESCE(@EmployeeName, EmployeeName),
-            Designation = COALESCE(@Designation, Designation),
-            NID = COALESCE(@NID, NID),
-            BloodGroup = COALESCE(@BloodGroup, BloodGroup),
-            JoiningDate = COALESCE(@JoiningDate, JoiningDate),
-            DepartmentId = COALESCE(@DepartmentId, DepartmentId)
-        WHERE EmployeeId = @EmployeeId;
-    END;';
-    EXEC sp_executesql @sql;
-
-    -- Create Update Department Procedure
-    SET @sql = N'
-    CREATE PROCEDURE dbo.UpdateDepartment
-        @DepartmentId INT,
-        @Code VARCHAR(255) = NULL,
-        @DNAME VARCHAR(50) = NULL
-    AS
-    BEGIN
-        UPDATE dbo.Department
-        SET Code = COALESCE(@Code, Code),
-            DNAME = COALESCE(@DNAME, DNAME)
-        WHERE DepartmentId = @DepartmentId;
-    END;';
-    EXEC sp_executesql @sql;
-
-    -- Create Delete Employee Procedure
-    SET @sql = N'
-    CREATE PROCEDURE dbo.DeleteEmployee
-        @EmployeeId INT
-    AS
-    BEGIN
-        DELETE FROM dbo.Employee
-        WHERE EmployeeId = @EmployeeId;
-    END;';
-    EXEC sp_executesql @sql;
-
-    -- Create Delete Department Procedure
-    SET @sql = N'
-    CREATE PROCEDURE dbo.DeleteDepartment
-        @DepartmentId INT
-    AS
-    BEGIN
-        DELETE FROM dbo.Department
-        WHERE DepartmentId = @DepartmentId;
-    END;';
-    EXEC sp_executesql @sql;
-
-    PRINT 'All procedures created successfully.';
+    PRINT 'Procedures created successfully.';
 END TRY
 BEGIN CATCH
     PRINT 'Error occurred: ' + ERROR_MESSAGE();
 END CATCH;
+Configuring Web.config
+Update the following section in the Web.config file with your SQL Server details:
 
-=============================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE sPGetEmployees
-	AS
-BEGIN
-	SET NOCOUNT ON;
- 
-	SELECT * FROM dbo.EMPLOYEE
-END
-GO
- 
-exec sPGetEmployees
+xml
+Copy code
+<connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=YOUR_SERVER_NAME;Initial Catalog=YOUR_DATABASE_NAME;Integrated Security=True;" providerName="System.Data.SqlClient" />
+</connectionStrings>
+Replace YOUR_SERVER_NAME and YOUR_DATABASE_NAME with your actual SQL Server details.
 
+Running the Application
+After completing the setup, press F5 in Visual Studio to run the application.
 
+Access the application in your browser using the URL provided by Visual Studio (e.g., http://localhost:1234).
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE sPGetEmployeeDepartments
-	AS
-BEGIN
-	SET NOCOUNT ON;
- 
-	SELECT E.*,D.Code,D.Name as DepartmentName FROM dbo.EMPLOYEE E
-	INNER JOIN DEPARTMENT D
-	ON E.DepartmentId=D.DepartmentId
- 
-    
-END
-GO
-exec sPGetEmployeeDepartments
-================================================================================
+Troubleshooting
+Common Issues and Solutions
+Database Connection Errors: Ensure your SQL Server is running and the connection string in the Web.config file is correct.
 
--- Execute Insert Employee Procedure
-EXEC dbo.InsertEmployee
-    @EmployeeName = 'John Doe',
-    @Designation = 'Software Engineer',
-    @NID = '123456789',
-    @BloodGroup = 'A+',
-    @JoiningDate = '2022-01-01',
-    @DepartmentId = 1;
+SQL Errors: Verify that the SQL scripts were executed successfully in SSMS.
 
--- Execute Insert Department Procedure
-EXEC dbo.InsertDepartment
-    @DepartmentId = 1,
-    @Code = 'IT-001',
-    @DNAME = 'Information Technology';
+Missing Dependencies: Restore NuGet packages in Visual Studio:
 
--- Execute Get Employees Procedure
-EXEC dbo.GetEmployees
+bash
+Copy code
+nuget restore
+About
+This application provides CRUD operations for managing employees and departments. It is built using ASP.NET and SQL Server for backend management.
 
+Languages Used:
+C#
+JavaScript
+HTML
+Feel free to contribute or raise issues for improvements!
 
---    @EmployeeId = 1,
---    @EmployeeName = 'John',
---    @Designation = 'Engineer';
-
--- Execute Get Departments Procedure
-EXEC dbo.GetDepartments
---    @DepartmentId = 1,
---    @Code = 'IT';
-
--- Execute Update Employee Procedure
-EXEC dbo.UpdateEmployee
-    @EmployeeId = 1,
-    @EmployeeName = 'John Doe Jr.',
-    @Designation = 'Senior Software Engineer',
-    @NID = '987654321',
-    @BloodGroup = 'B+',
-    @JoiningDate = '2020-06-01',
-    @DepartmentId = 1;
-
--- Execute Update Department Procedure
-EXEC dbo.UpdateDepartment
-    @DepartmentId = 1,
-    @Code = 'IT-001-A',
-    @DNAME = 'Information Technology - Software';
-
--- Execute Delete Employee Procedure
-EXEC dbo.DeleteEmployee
-    @EmployeeId = 1;
-
--- Execute Delete Department Procedure
-EXEC dbo.DeleteDepartment
-    @DepartmentId = 1;
-
-=============================================================
-In web.config file, update the following according to your machine: (FOR DB server connection)
-<!-- <add name="EMS" connectionString="Server = LCG-VIKASMISHRA; Database = EMPT; Integrated Security = true;" /> -->
-<add name="EMS" connectionString="Server = yourlocal machine server name; Database = your new database created name; Integrated Security = true;" />
-
-Once done,
-Run the project and proceed with CRUD operations
-
+vbnet
+Copy code
