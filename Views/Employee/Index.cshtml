@@ -22,8 +22,6 @@
         color: white;
         font-size: xx-large;
     }
-
-
 </style>
 
 <div id="loader">
@@ -32,8 +30,8 @@
     </div>
 </div>
 @*<div id="loader">
-    <div class="custom-spinner"></div>
-</div>*@
+        <div class="custom-spinner"></div>
+    </div>*@
 
 
 <h2>Employee Information</h2>
@@ -110,94 +108,94 @@
 </table>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/Employee.js"></script>
+@*<script>
+        $(document).ready(function () {
+            // Show the loader
 
-<script>
-    $(document).ready(function () {
-        // Show the loader
+        });
+    </script>
 
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#loader").show();
-        $("#employeeTable").hide()
-        // Hide the loader after 2 seconds or when the page is fully loaded
-        setTimeout(function () {
-            $("#loader").hide();
-            $("#employeeTable").show()
-
-        }, 1500);
-        $(document).ajaxStart(function () {
-            // Show loader when an AJAX request starts
+    <script>
+        $(document).ready(function () {
             $("#loader").show();
-        });
+            $("#employeeTable").hide()
+            // Hide the loader after 2 seconds or when the page is fully loaded
+            setTimeout(function () {
+                $("#loader").hide();
+                $("#employeeTable").show()
 
-        $(document).ajaxStop(function () {
-            // Hide loader when all AJAX requests are complete
-            $("#loader").hide();
-        });
+            }, 1500);
+            $(document).ajaxStart(function () {
+                // Show loader when an AJAX request starts
+                $("#loader").show();
+            });
 
-        // Handle Edit button click
-        $(".edit-btn").click(function () {
-            var row = $(this).closest("tr");
-            row.find(".view-mode").hide();
-            row.find(".edit-mode").show();
-            row.find(".edit-btn").hide();
-            row.find(".save-btn").show();
-            row.find(".delete-btn").hide(); // Hide the Delete button
-        });
+            $(document).ajaxStop(function () {
+                // Hide loader when all AJAX requests are complete
+                $("#loader").hide();
+            });
 
-        // Handle Save button click
-        $(".save-btn").click(function () {
-            var row = $(this).closest("tr");
-            var employeeId = row.data("employee-id");
+            // Handle Edit button click
+            $(".edit-btn").click(function () {
+                var row = $(this).closest("tr");
+                row.find(".view-mode").hide();
+                row.find(".edit-mode").show();
+                row.find(".edit-btn").hide();
+                row.find(".save-btn").show();
+                row.find(".delete-btn").hide(); // Hide the Delete button
+            });
 
-            // Collect data
-            var updatedData = {
-                EmployeeId: employeeId,
-                EmployeeName: row.find("input").eq(0).val(),
-                Designation: row.find("input").eq(1).val(),
-                NID: row.find("input").eq(2).val(),
-                JoiningDate: row.find("input").eq(3).val(),
-                Code: row.find("input").eq(4).val(),
-                DepartmentId: row.find("select").eq(0).val(),
-                BloodGroup: row.find("select").eq(1).val()
-            };
+            // Handle Save button click
+            $(".save-btn").click(function () {
+                var row = $(this).closest("tr");
+                var employeeId = row.data("employee-id");
 
-            // Send data to the server
-            $.ajax({
-                url: '@Url.Action("Edit", "Employee")',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(updatedData),
-                success: function (response) {
-                    if (response === "Success") {
-                        // Update view mode values
-                        //row.find(".view-mode").eq(0).text(updatedData.EmployeeName);
-                        //row.find(".view-mode").eq(1).text(updatedData.Designation);
-                        //row.find(".view-mode").eq(2).text(updatedData.NID);
-                        //row.find(".view-mode").eq(3).text(updatedData.JoiningDate);
-                        //row.find(".view-mode").eq(4).text(updatedData.Code);
-                        //row.find(".view-mode").eq(5).text(departments.find(d => d.DepartmentId == updatedData.DepartmentId).Name);
-                        //row.find(".view-mode").eq(6).text(updatedData.BloodGroup);
+                // Collect data
+                var updatedData = {
+                    EmployeeId: employeeId,
+                    EmployeeName: row.find("input").eq(0).val(),
+                    Designation: row.find("input").eq(1).val(),
+                    NID: row.find("input").eq(2).val(),
+                    JoiningDate: row.find("input").eq(3).val(),
+                    Code: row.find("input").eq(4).val(),
+                    DepartmentId: row.find("select").eq(0).val(),
+                    BloodGroup: row.find("select").eq(1).val()
+                };
 
-                        //// Switch back to view mode
-                        //row.find(".view-mode").show();
-                        //row.find(".edit-mode").hide();
-                        //row.find(".edit-btn").show();
-                        //row.find(".save-btn").hide();
-                        //row.find(".delete-btn").show(); // Show the Delete button
-                        location.reload();
+                // Send data to the server
+                $.ajax({
+                    url: '@Url.Action("Edit", "Employee")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(updatedData),
+                    success: function (response) {
+                        if (response === "Success") {
+                            // Update view mode values
+                            //row.find(".view-mode").eq(0).text(updatedData.EmployeeName);
+                            //row.find(".view-mode").eq(1).text(updatedData.Designation);
+                            //row.find(".view-mode").eq(2).text(updatedData.NID);
+                            //row.find(".view-mode").eq(3).text(updatedData.JoiningDate);
+                            //row.find(".view-mode").eq(4).text(updatedData.Code);
+                            //row.find(".view-mode").eq(5).text(departments.find(d => d.DepartmentId == updatedData.DepartmentId).Name);
+                            //row.find(".view-mode").eq(6).text(updatedData.BloodGroup);
 
-                    } else {
-                        alert("Failed to update employee details.");
+                            //// Switch back to view mode
+                            //row.find(".view-mode").show();
+                            //row.find(".edit-mode").hide();
+                            //row.find(".edit-btn").show();
+                            //row.find(".save-btn").hide();
+                            //row.find(".delete-btn").show(); // Show the Delete button
+                            location.reload();
+
+                        } else {
+                            alert("Failed to update employee details.");
+                        }
+                    },
+                    error: function () {
+                        alert("Error updating employee details.");
                     }
-                },
-                error: function () {
-                    alert("Error updating employee details.");
-                }
+                });
             });
         });
-    });
-</script>
+    </script>*@
