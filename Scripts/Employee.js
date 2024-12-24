@@ -14,14 +14,34 @@
         $("#loader").hide();
     });
 
+    //$(".edit-btn").click(function () {
+    //    var row = $(this).closest("tr");
+    //    console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
+
+    //    row.find(".view-mode").hide();
+    //    row.find(".edit-mode").show();
+    //    row.find(".edit-btn").hide();
+    //    row.find(".save-btn").show();
+    //    row.find(".delete-btn").hide();
+
+    //    console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
+    //});
     $(".edit-btn").click(function () {
         var row = $(this).closest("tr");
+        console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
+        console.log('Before: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
+
+        // Hide view-mode and show edit-mode
         row.find(".view-mode").hide();
         row.find(".edit-mode").show();
         row.find(".edit-btn").hide();
         row.find(".save-btn").show();
         row.find(".delete-btn").hide();
+
+        console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
+        console.log('After: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
     });
+
 
     $(".save-btn").click(function () {
         var row = $(this).closest("tr");
