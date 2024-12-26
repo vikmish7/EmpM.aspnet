@@ -10,18 +10,18 @@ $(document).ready(function () {
         $("#employeeTable").show();
     }, 1500);
 
-    $(document).ajaxStart(function () {
-        $("#loader").show();
-    });
+    //$(document).ajaxStart(function () {
+    //    $("#loader").show();
+    //});
 
-    $(document).ajaxStop(function () {
-        $("#loader").hide();
-    });
+    //$(document).ajaxStop(function () {
+    //    $("#loader").hide();
+    //});
 
     //$(".edit-btn").click(function () {
     //    var row = $(this).closest("tr");
     //    console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
-
+        
     //    row.find(".view-mode").hide();
     //    row.find(".edit-mode").show();
     //    row.find(".edit-btn").hide();

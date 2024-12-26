@@ -81,8 +81,11 @@ module.exports = function(config) {
   config.set({
     frameworks: ['jasmine'],  // Use Jasmine as the testing framework
     files: [
+      'node_modules/requirejs/require.js',  // Load require.js
+      'node_modules/jquery/dist/jquery.min.js',  // Load jQuery
       'Scripts/test/**/*.js',  // Include your source files
-      'Scripts/test/**/*.test.js'  // Include your test files
+      'Scripts/test/**/*.test.js',  // Include your test files
+
     ],
     browsers: ['Chrome'],  // Run the tests in Chrome (can be any browser)
     singleRun: false,  // Run tests once
@@ -97,5 +100,27 @@ module.exports = function(config) {
     colors: true,  // Use colored output in the terminal
     logLevel: config.LOG_INFO,  // Log level (can be LOG_DEBUG, LOG_INFO, etc.)
     autoWatch: true,  // Enable watch mode (tests run on file change)
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-jasmine-html-reporter',
+      'karma-requirejs'  // Add the requirejs plugin
+    ],
+
+        // RequireJS configuration for resolving dependencies
+    requireConfig: {
+      paths: {
+        'jquery': 'node_modules/jquery/dist/jquery.min', // Path to jQuery
+        'jasmine': 'node_modules/jasmine-core/lib/jasmine-core/jasmine', // Path to Jasmine core
+      },
+      shim: {
+        'jquery': {
+          exports: '$'  // Define jQuery as the global $
+        },
+        'jasmine': {
+          exports: 'jasmine'  // Define Jasmine as a global variable
+        }
+      }
+    },
   });
 };
