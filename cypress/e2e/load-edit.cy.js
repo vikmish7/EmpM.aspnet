@@ -110,3 +110,24 @@ describe('Save Button Error Handling', () => {
     });
   });
 });
+
+
+// describe('Delete Employee', () => {
+//   it('should successfully delete an employee and update the employee list', () => {
+//     cy.visit('/Employee'); // Visit the employee listing page
+
+//     // Get the first employee's row and capture the employee's name for comparison
+//     cy.get('#employeeTable tbody tr').first().within(() => {
+//       cy.get('td').eq(1).invoke('text').as('employeeName'); // Capture employee name
+//       cy.get('.delete-btn').click(); // Click the delete button
+//     });
+
+//     // Wait for the page to reload after deletion
+//     cy.url().should('include', '/Employee'); // Assert that we are back at the employee list page
+
+//     // Verify that the employee no longer exists in the table
+//     cy.get('@employeeName').then((employeeName) => {
+//       cy.get('#employeeTable tbody tr').first().should('not.contain', employeeName); // Check if employee is removed
+//     });
+//   });
+// });
