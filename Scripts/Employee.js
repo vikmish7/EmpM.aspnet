@@ -1,7 +1,7 @@
 ﻿
 
 $(document).ready(function () {
-    console.log("--------------------jquet button clicked!--------------");
+    console.log("--------------------empjs loaded--------------");
 
     $("#loader").show();
     $("#employeeTable").hide();
@@ -31,7 +31,7 @@ $(document).ready(function () {
     //    console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
     //});
     $(".edit-btn").click(function () {
-        console.log("Save button clicked!--------------");
+        console.log("edit button clicked!--------------");
 
         var row = $(this).closest("tr");
         console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
