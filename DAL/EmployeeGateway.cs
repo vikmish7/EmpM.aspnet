@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using Xunit.Sdk;
 
 namespace EmployeeManagementApp.DAL
 {
@@ -43,6 +44,8 @@ namespace EmployeeManagementApp.DAL
 
         public string SaveEmployees(Employee employee)
         {
+
+
             SqlConnection connection = new SqlConnection(connectionString);
             
 
@@ -79,8 +82,15 @@ namespace EmployeeManagementApp.DAL
             {
                 return "SuccessFull";
             }
+            //else
+            //{
+            //    return StatusCode(500, new { message = "An error occurred while saving the employee." }); // Returns 500 Internal Server Error
+
+            //}
             return "Failed";
         }
+
+
 
         public string DeleteEmployees(int id)
         {

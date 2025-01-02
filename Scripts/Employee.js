@@ -2,6 +2,9 @@
 
 $(document).ready(function () {
     console.log("--------------------empjs loaded--------------");
+    console.log(jQuery.fn);
+    console.log($.fn.kendoDropDownList);
+    console.log(window.kendo); // Should display Kendo UI object
 
     $("#loader").show();
     $("#employeeTable").hide();
@@ -10,6 +13,75 @@ $(document).ready(function () {
         $("#employeeTable").show();
     }, 1500);
 
+    if ($("#kendoButton").length > 0) {
+        $("#kendoButton").kendoButton({
+            click: function () {
+                alert("Kendo Button clicked!");
+            }
+        });
+    }
+    if (window.kendo) {
+        console.log("Kendo UI is loaded and available!");
+
+        // Initialize Kendo DropDownList
+        $("#BloodGroup").kendoDropDownList({
+            optionLabel: "-Select-",
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                { text: "A+", value: "A+" },
+                { text: "B+", value: "B+" },
+                { text: "AB+", value: "AB+" },
+                { text: "O+", value: "O+" },
+                { text: "A-", value: "A-" },
+                { text: "B-", value: "B-" },
+                { text: "O-", value: "O-" }
+            ]
+        });
+
+        var bloodGroupDropDown = $("#BloodGroup").data("kendoDropDownList");
+
+        // Change font color using Kendo's API
+        bloodGroupDropDown.wrapper.css("color", "red"); 
+    } else {
+        console.error("Kendo UI is not available.");
+    }
+
+    console.log("@Url.Action('GetDepartments', 'Employee')"); // Log URL for debugging
+    var departmentsUrl2 = $('#sel').data('departments-url');
+    console.log("Departments URL through data: ", departmentsUrl2);
+    var departmentsUrl = '/Employee/GetDepartments';
+    console.log("Departments URL: ", departmentsUrl); // Check if URL is correct in console
+
+    $.ajax({
+        url: departmentsUrl,
+        type: 'GET',
+        success: function (response) {
+            console.log("Departments:", response);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching departments:", error);
+        }
+    });
+    $("#DepartmentId").kendoDropDownList({
+        optionLabel: "-Select-",
+        dataTextField: "text",
+        dataValueField: "value",
+        dataSource: {
+            transport: {
+                read: {
+                    url: departmentsUrl, // The URL rendered
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("Departments fetched successfully:", data); // Log response
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error fetching departments:", error); // Log errors
+                    }
+                }
+            }
+        }
+    });
     //$(document).ajaxStart(function () {
     //    $("#loader").show();
     //});

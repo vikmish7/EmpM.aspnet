@@ -90,6 +90,18 @@ namespace EmployeeManagementApp.Controllers
             //return View(departments);
         }
 
+        [HttpGet]
+        public JsonResult GetDepartments()
+        {
+            DepartmentManager dm = new DepartmentManager();
+            var departments = dm.GetDepartments().Select(d => new
+            {
+                text = d.Name,
+                value = d.DepartmentId
+            }).ToList();
+
+            return Json(departments, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public JsonResult Edit(Employee employee)
         {

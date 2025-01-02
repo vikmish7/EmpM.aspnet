@@ -2,6 +2,7 @@ describe('Employee Table Loader', () => {
   it('should display loader and then show the table', () => {
     cy.visit('/Employee'); // Adjust the route as per your app
 
+  
     // Loader should be visible initially
     cy.get('#loader').should('be.visible');
 
