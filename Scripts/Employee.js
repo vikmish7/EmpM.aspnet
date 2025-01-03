@@ -39,10 +39,7 @@ $(document).ready(function () {
             ]
         });
 
-        var bloodGroupDropDown = $("#BloodGroup").data("kendoDropDownList");
-
-        // Change font color using Kendo's API
-        bloodGroupDropDown.wrapper.css("color", "red"); 
+    
     } else {
         console.error("Kendo UI is not available.");
     }
@@ -102,22 +99,40 @@ $(document).ready(function () {
 
     //    console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
     //});
-    $(".edit-btn").click(function () {
-        console.log("edit button clicked!--------------");
+    //$(".edit-btn").click(function () {
+    //    console.log("edit button clicked!--------------");
 
-        var row = $(this).closest("tr");
-        console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
-        console.log('Before: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
+    //    var row = $(this).closest("tr");
+    //    console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
+    //    console.log('Before: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
 
-        // Hide view-mode and show edit-mode
-        row.find(".view-mode").hide();
-        row.find(".edit-mode").show();
-        row.find(".edit-btn").hide();
-        row.find(".save-btn").show();
-        row.find(".delete-btn").hide();
+    //    // Hide view-mode and show edit-mode
+    //    row.find(".view-mode").hide();
+    //    row.find(".edit-mode").show();
+    //    row.find(".edit-btn").hide();
+    //    row.find(".save-btn").show();
+    //    row.find(".delete-btn").hide();
 
-        console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
-        console.log('After: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
+    //    console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
+    //    console.log('After: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
+    //});
+
+    $(".edit-btn").kendoButton({
+
+        click: function () {
+            var row = $(this.element).closest("tr");
+            console.log('Before: View Mode Visible:', row.find('.view-mode').is(":visible"));
+            console.log('Before: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));
+
+            // Hide view-mode and show edit-mode
+            row.find(".view-mode").hide();
+            row.find(".edit-mode").show();
+            row.find(".edit-btn").hide();
+            row.find(".save-btn").show();
+            row.find(".delete-btn").hide();
+
+            console.log('After: View Mode Visible:', row.find('.view-mode').is(":visible"));
+            console.log('After: Edit Mode Visible:', row.find('.edit-mode').is(":visible"));        }
     });
     //$(document).on("click", ".save-btn", function () {
     //    // Click handler logic
