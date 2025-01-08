@@ -102,6 +102,39 @@ describe('Create Employee Form', () => {
   //   });
   // });
 
+  it('should show an alert if Employee Name is empty and prevent form submission', () => {
+    // Fill the form except EmployeeName
+    cy.visit('/Employee/Create');
+  
+    // Intercept the GET request to fetch departments (adjust the URL based on your application)
+    cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
+  
+    // Wait for the departments data to load
+    cy.wait('@getDepartments');
+  
+    cy.get('input[name="Designation"]').type('Manager');
+    cy.get('input[name="NID"]').type('123456789');
+    cy.get('input[name="JoiningDate"]').type('2023-01-01');
+    
+    // Select department and blood group
+    cy.get('select[name="DepartmentId"]').select('Information Technology', { force: true });
+    cy.get('select[name="BloodGroup"]').select('A+', { force: true });
+
+    // Stub the alert window to check for the alert message
+    // cy.on('window:alert', (str) => {
+    //   expect(str).to.equal('Please fill out the Employee Name field.');
+    // });
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal('Please fill out the Employee Name field.');
+      return true; // Automatically dismiss the alert by returning true
+    });
+
+    // Trigger form validation logic without actual form submission
+    cy.get('form').submit(); // This will trigger the validation
+
+    // Assert that the form was not submitted by checking that the page URL has not changed
+    cy.url().should('include', '/Employee/Create'); // Ensure the form was not submitted and the user stays on the form page
+  });
 
   it('should allow submission when all fields are valid', () => {
     cy.visit('/Employee/Create');
