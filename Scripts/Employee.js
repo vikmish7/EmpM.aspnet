@@ -5,6 +5,31 @@ $(document).ready(function () {
     console.log(jQuery.fn);
     console.log($.fn.kendoDropDownList);
     console.log(window.kendo); // Should display Kendo UI object
+    console.log( $('input[name="EmployeeName"]')); // Check if the element exists
+
+    //$('input[name="EmployeeName"]').on('input', function () {
+    //    if ($(this).val().trim() === '') {
+    //        $(this).css('border', '1px solid red');
+    //    } else {
+    //        $(this).css('border', '1px solid green');
+    //    }
+    //});
+
+    //$(document).on('input', 'input[name="EmployeeName"]', function () {
+    //    if ($(this).val().trim() === '') {
+    //        $(this).css('border', '1px solid red');
+    //    } else {
+    //        $(this).css('border', '1px solid green');
+    //    }
+    //});
+    //$('.delete-btn').on('click', function () {
+    //    if (confirm('Are you sure you want to delete this employee?')) {
+    //        // Proceed with deletion logic
+    //        console.log('Employee deleted!');
+    //    }
+    //});
+    //$('.edit-btn').attr('title', 'Edit Employee').tooltip();
+    //$('.delete-btn').attr('title', 'Delete Employee').tooltip();
 
     $("#loader").show();
     $("#employeeTable").hide();

@@ -24,21 +24,21 @@
     </div>
 
     @* <div class="form-group">
-        <select class="form-control" name="DepartmentId">
-            <option value="0">-Select-</option>
-            @foreach (var departments in Model)
-            {
-                <option value="@departments.DepartmentId">@departments.Name</option>
-            }
+            <select class="form-control" name="DepartmentId">
+                <option value="0">-Select-</option>
+                @foreach (var departments in Model)
+                {
+                    <option value="@departments.DepartmentId">@departments.Name</option>
+                }
 
-        </select>
+            </select>
 
-    </div> *@
+        </div> *@
     <div class="form-group" id="sel" data-departments-url="@Url.Action("GetDepartments", "Employee")">
-    <select id="DepartmentId" name="DepartmentId" class="form-control">
-        <option value="0">-Select-</option>
-    </select>
-</div>
+        <select id="DepartmentId" name="DepartmentId" class="form-control">
+            <option value="0">-Select-</option>
+        </select>
+    </div>
     <div class="form-group">
         <select class="form-control" name="BloodGroup" id="BloodGroup">
             <option value="0">-Select-</option>
@@ -68,7 +68,7 @@
 
 
 <!-- Kendo UI Scripts -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" defer ></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
 <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
 
 <script src="~/Scripts/kendo.all.min.js" defer></script>
@@ -76,4 +76,5 @@
 
 
 <script src="~/Scripts/Employee.js" defer></script>
+<script src="~/Scripts/EmpFunc.js" defer></script>
 

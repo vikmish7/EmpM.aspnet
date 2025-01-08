@@ -13,6 +13,7 @@
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@playwright/test": "^1.49.1",
+    "@types/jquery": "^3.5.32",
     "babel-jest": "^29.7.0",
     "cypress": "^13.17.0",
     "jasmine": "^5.5.0",
@@ -28,7 +29,8 @@
     "karma-html-reporter": "^0.2.7",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "playwright": "^1.49.1"
+    "playwright": "^1.49.1",
+    "typescript": "^5.7.2"
   },
   "jest": {
     "preset": "jest-playwright-preset",

@@ -12,6 +12,53 @@ describe('Create Employee Form', () => {
     cy.get('input[type="submit"]').should('exist');
   });
 
+  it('should reset border color to default (#ccc) on focus', () => {
+    cy.visit('/Employee/Create'); // Replace with the actual route
+
+    cy.get('input[name="EmployeeName"]')
+      .focus()
+      .should('have.css', 'border', '0.666667px solid rgb(102, 175, 233)'); // Default border color
+  });
+
+  it('should turn the border red when the input is empty on blur', () => {
+    cy.visit('/Employee/Create'); // Replace with the actual route
+
+    cy.get('input[name="EmployeeName"]')
+      .focus()
+      .blur()
+      .should('have.css', 'border', '0.666667px solid rgb(204, 204, 204)'); // Red border
+  });
+
+  it('should turn the border green when a valid value is entered', () => {
+    cy.visit('/Employee/Create'); // Replace with the actual route
+
+    cy.get('input[name="EmployeeName"]')
+      .type('John Doe')
+      .blur()
+      .should('have.css', 'border', '0.666667px solid rgb(0, 128, 0)'); // Green border
+  });
+
+  it('should turn the border red when the input is cleared after entering text', () => {
+    cy.visit('/Employee/Create'); // Replace with the actual route
+
+    cy.get('input[name="EmployeeName"]')
+      .type('John Doe')
+      .clear()
+      .blur()
+      .should('have.css', 'border', '0.666667px solid rgb(255, 0, 0)'); // Red border
+  });
+
+  it('should validate on every input event', () => {
+    cy.visit('/Employee/Create'); // Replace with the actual route
+
+    cy.get('input[name="EmployeeName"]')
+
+      .type(' ')
+      .should('have.css', 'border', '0.666667px solid rgb(255, 0, 0)') // Red border for empty trimmed input
+      .clear()
+      .type('John')
+      .should('have.css', 'border', '0.666667px solid rgb(0, 128, 0)'); // Green border for valid input
+  });
 
   // it('should allow submission when all fields are valid', () => {
   //   cy.visit('/Employee/Create');
