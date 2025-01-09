@@ -4,7 +4,9 @@
   "description": "A simple ASP.NET application to manage employees and departments.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "tsc": "tsc"
+
   },
   "keywords": [],
   "author": "",

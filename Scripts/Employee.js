@@ -6,7 +6,62 @@ $(document).ready(function () {
     console.log($.fn.kendoDropDownList);
     console.log(window.kendo); // Should display Kendo UI object
     console.log( $('input[name="EmployeeName"]')); // Check if the element exists
+    const sampleData = [
+        {
+            EmployeeName: "John Doe",
+            Designation: "Manager",
+            NID: "123456789",
+            JoiningDate: "2023-01-01"
+        },
+        {
+            EmployeeName: "Jane Smith",
+            Designation: "Developer",
+            NID: "987654321",
+            JoiningDate: "2022-12-15"
+        },
+        {
+            EmployeeName: "Alice Johnson",
+            Designation: "HR",
+            NID: "567890123",
+            JoiningDate: "2023-02-10"
+        }
+    ];
+    const employeeData = JSON.parse($('#employeeGrid').attr('data-employee-data'));
+console.log(employeeData)
+employeeData.forEach(employee => {
+    employee.JoiningDate = new Date(parseInt(employee.JoiningDate.substr(6))); // Convert `/Date(...)` to a Date object
+});
 
+// $("#employeeGrid").kendoGrid({
+//     dataSource: {
+//         data: employeeData, // Use the parsed employee data
+//         pageSize: 10 // Set the number of records per page
+//     },
+//     pageable: true, // Enable pagination
+//     sortable: true, // Enable sorting
+//     filterable: true, // Enable filtering
+//     columns: [
+//         { field: "EmployeeName", title: "Employee Name" },
+//         { field: "Designation", title: "Designation" },
+//         { field: "NID", title: "National ID" },
+//         { field: "JoiningDate", title: "Joining Date", format: "{0:yyyy-MM-dd}" },
+//         { field: "Code", title: "Code" },
+//         { field: "DepartmentName", title: "Department Name" },
+//         { field: "BloodGroup", title: "Blood Group" },
+//         {
+//             command: [
+//                 { name: "edit", text: "Edit" }, // Adds an Edit button
+//                 { name: "destroy", text: "Delete" } // Adds a Delete button
+//             ],
+//             title: "Actions",
+//             width: "200px"
+//         }
+//     ],
+//     editable: {
+//         mode: "popup", // Use popup editing
+//         confirmation: "Are you sure you want to delete this employee?" // Confirm before deletion
+//     },
+// });
     //$('input[name="EmployeeName"]').on('input', function () {
     //    if ($(this).val().trim() === '') {
     //        $(this).css('border', '1px solid red');
