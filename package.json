@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest --verbose",
     "tsc": "tsc"
-
   },
   "keywords": [],
   "author": "",
