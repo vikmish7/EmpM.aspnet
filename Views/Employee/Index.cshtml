@@ -136,52 +136,56 @@
         }
     </tbody>
 </table>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" defer ></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
 
 
-  @* $(document).ready(function () {
-    // Retrieve employee data from the Razor view
-    console.log($('#employeeGrid').attr('data-employee-data'));
-    console.log(@Html.Raw(Json.Encode(Model)));
+@* $(document).ready(function () {
+      // Retrieve employee data from the Razor view
+      console.log($('#employeeGrid').attr('data-employee-data'));
+      console.log(@Html.Raw(Json.Encode(Model)));
 
-    const employeeData = JSON.parse($('#employeeGrid').attr('data-employee-data'));
+      const employeeData = JSON.parse($('#employeeGrid').attr('data-employee-data'));
 
-    // Initialize the Kendo Grid with the employee data
-    $("#employeeGrid").kendoGrid({
-      dataSource: {
-        data: employeeData,  // Use the dynamic data from Razor
-        pageSize: 10,        // Items per page
-      },
-      pageable: true,        // Enable pagination
-      sortable: true,        // Enable sorting
-      filterable: true,      // Enable filtering
-      columns: [
-        { field: "EmployeeName", title: "Employee Name" },
-        { field: "Designation", title: "Designation" },
-        { field: "NID", title: "National ID" },
-        { field: "JoiningDate", title: "Joining Date", format: "{0:yyyy-MM-dd}" },
-        { field: "Code", title: "Code" },
-        { field: "DepartmentName", title: "Department" },
-        { field: "BloodGroup", title: "Blood Group" },
-        {
-          command: [
-            { name: "edit", text: "Edit" }, 
-            { name: "destroy", text: "Delete" }
-          ], 
-          title: "Actions", 
-          width: "180px"
+      // Initialize the Kendo Grid with the employee data
+      $("#employeeGrid").kendoGrid({
+        dataSource: {
+          data: employeeData,  // Use the dynamic data from Razor
+          pageSize: 10,        // Items per page
+        },
+        pageable: true,        // Enable pagination
+        sortable: true,        // Enable sorting
+        filterable: true,      // Enable filtering
+        columns: [
+          { field: "EmployeeName", title: "Employee Name" },
+          { field: "Designation", title: "Designation" },
+          { field: "NID", title: "National ID" },
+          { field: "JoiningDate", title: "Joining Date", format: "{0:yyyy-MM-dd}" },
+          { field: "Code", title: "Code" },
+          { field: "DepartmentName", title: "Department" },
+          { field: "BloodGroup", title: "Blood Group" },
+          {
+            command: [
+              { name: "edit", text: "Edit" },
+              { name: "destroy", text: "Delete" }
+            ],
+            title: "Actions",
+            width: "180px"
+          }
+        ],
+        editable: {
+          mode: "popup",  // Open a popup editor for editing employees
+          confirmation: "Are you sure you want to delete this employee?", // Confirm before deletion
         }
-      ],
-      editable: {
-        mode: "popup",  // Open a popup editor for editing employees
-        confirmation: "Are you sure you want to delete this employee?", // Confirm before deletion
-      }
-    });
-  }); *@
-<script src="https://unpkg.com/jszip/dist/jszip.min.js" defer></script>
+      });
+    }); *@
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+<script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
 
 <script src="~/Scripts/kendo.all.min.js" defer></script>
 <script src="~/Scripts/kendo-ui-license.js" defer></script>
 
 
 <script src="~/Scripts/Employee.js" defer></script>
+<script src="~/Scripts/compiled/kendogrid.js" defer></script>

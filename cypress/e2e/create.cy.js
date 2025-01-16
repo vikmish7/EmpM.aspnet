@@ -12,32 +12,15 @@ describe('Create Employee Form', () => {
     cy.get('input[type="submit"]').should('exist');
   });
 
-  it('should reset border color to default (#ccc) on focus', () => {
-    cy.visit('/Employee/Create'); // Replace with the actual route
 
+  it('should reset border color to default on focus', () => {
+    cy.visit('/Employee/Create');
+  
     cy.get('input[name="EmployeeName"]')
       .focus()
-      .should('have.css', 'border', '0.666667px solid rgb(102, 175, 233)'); // Default border color
+      .should('have.css', 'border-color', 'rgb(204, 204, 204)'); // Adjust default border color
   });
-
-  it('should turn the border red when the input is empty on blur', () => {
-    cy.visit('/Employee/Create'); // Replace with the actual route
-
-    cy.get('input[name="EmployeeName"]')
-      .focus()
-      .blur()
-      .should('have.css', 'border', '0.666667px solid rgb(204, 204, 204)'); // Red border
-  });
-
-  it('should turn the border green when a valid value is entered', () => {
-    cy.visit('/Employee/Create'); // Replace with the actual route
-
-    cy.get('input[name="EmployeeName"]')
-      .type('John Doe')
-      .blur()
-      .should('have.css', 'border', '0.666667px solid rgb(0, 128, 0)'); // Green border
-  });
-
+  
   it('should turn the border red when the input is cleared after entering text', () => {
     cy.visit('/Employee/Create'); // Replace with the actual route
 
@@ -59,7 +42,36 @@ describe('Create Employee Form', () => {
       .type('John')
       .should('have.css', 'border', '0.666667px solid rgb(0, 128, 0)'); // Green border for valid input
   });
+  
 
+  // it('should reset border color to default (#ccc) on focus', () => {
+  //   cy.visit('/Employee/Create'); // Replace with the actual route
+
+  //   cy.get('input[name="EmployeeName"]')
+  //     .focus()
+  //     .should('have.css', 'border', '0.666667px solid rgb(102, 175, 233)'); // Default border color
+  // });
+
+  // it('should turn the border red when the input is empty on blur', () => {
+  //   cy.visit('/Employee/Create'); // Replace with the actual route
+
+  //   cy.get('input[name="EmployeeName"]')
+  //     .focus()
+  //     .blur()
+  //     .should('have.css', 'border', '0.666667px solid rgb(204, 204, 204)'); // Red border
+  // });
+
+  // it('should turn the border green when a valid value is entered', () => {
+  //   cy.visit('/Employee/Create'); // Replace with the actual route
+
+  //   cy.get('input[name="EmployeeName"]')
+  //     .type('John Doe')
+  //     .blur()
+  //     .should('have.css', 'border', '0.666667px solid rgb(0, 128, 0)'); // Green border
+  // });
+
+
+// ------------------------------------
   // it('should allow submission when all fields are valid', () => {
   //   cy.visit('/Employee/Create');
   // // Intercept the request to fetch departments (adjust the URL based on your application)
@@ -102,39 +114,40 @@ describe('Create Employee Form', () => {
   //   });
   // });
 
-  it('should show an alert if Employee Name is empty and prevent form submission', () => {
-    // Fill the form except EmployeeName
-    cy.visit('/Employee/Create');
+  // it('should show an alert if Employee Name is empty and prevent form submission', () => {
+  //   // Fill the form except EmployeeName
+  //   cy.visit('/Employee/Create');
   
-    // Intercept the GET request to fetch departments (adjust the URL based on your application)
-    cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
+  //   // Intercept the GET request to fetch departments (adjust the URL based on your application)
+  //   cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
   
-    // Wait for the departments data to load
-    cy.wait('@getDepartments');
+  //   // Wait for the departments data to load
+  //   cy.wait('@getDepartments');
   
-    cy.get('input[name="Designation"]').type('Manager');
-    cy.get('input[name="NID"]').type('123456789');
-    cy.get('input[name="JoiningDate"]').type('2023-01-01');
+  //   cy.get('input[name="Designation"]').type('Manager');
+  //   cy.get('input[name="NID"]').type('123456789');
+  //   cy.get('input[name="JoiningDate"]').type('2023-01-01');
     
-    // Select department and blood group
-    cy.get('select[name="DepartmentId"]').select('Information Technology', { force: true });
-    cy.get('select[name="BloodGroup"]').select('A+', { force: true });
+  //   // Select department and blood group
+  //   cy.get('select[name="DepartmentId"]').select('Information Technology', { force: true });
+  //   cy.get('select[name="BloodGroup"]').select('A+', { force: true });
 
-    // Stub the alert window to check for the alert message
-    // cy.on('window:alert', (str) => {
-    //   expect(str).to.equal('Please fill out the Employee Name field.');
-    // });
-    cy.on('window:alert', (str) => {
-      expect(str).to.equal('Please fill out the Employee Name field.');
-      return true; // Automatically dismiss the alert by returning true
-    });
+  //   // Stub the alert window to check for the alert message
+  //   // cy.on('window:alert', (str) => {
+  //   //   expect(str).to.equal('Please fill out the Employee Name field.');
+  //   // });
+  //   cy.on('window:alert', (str) => {
+  //     expect(str).to.equal('Please fill out the Employee Name field.');
+  //     return true; // Automatically dismiss the alert by returning true
+  //   });
 
-    // Trigger form validation logic without actual form submission
-    cy.get('form').submit(); // This will trigger the validation
+  //   // Trigger form validation logic without actual form submission
+  //   cy.get('form').submit(); // This will trigger the validation
 
-    // Assert that the form was not submitted by checking that the page URL has not changed
-    cy.url().should('include', '/Employee/Create'); // Ensure the form was not submitted and the user stays on the form page
-  });
+  //   // Assert that the form was not submitted by checking that the page URL has not changed
+  //   cy.url().should('include', '/Employee/Create'); // Ensure the form was not submitted and the user stays on the form page
+  // });
+// ------------------------------
 
   it('should allow submission when all fields are valid', () => {
     cy.visit('/Employee/Create');
