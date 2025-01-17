@@ -121,7 +121,7 @@ $(document).ready(function () {
         validateInput($(this), 'text');
     });
     $('input[name="Designation"]').on('input blur', function () {
-        validateInput($(this), 'alpha');
+        validateInput($(this), 'text');
     });
     $('input[name="NID"]').on('input blur', function () {
         validateInput($(this), 'numeric');

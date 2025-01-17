@@ -30,6 +30,23 @@ namespace EmployeeManagementApp.Controllers
             return View(employeeDepartmentList);
         }
 
+
+        public ActionResult Kendo()
+        {
+            // Fetch employees with their department details
+            List<EmployeeDepartmentViewModel> employeeDepartmentList = edm.GetAllEmployeeDepartment();
+
+            // Fetch departments for dropdowns
+            DepartmentManager dm = new DepartmentManager();
+            var departments = dm.GetDepartments();
+
+            // Pass departments to the view via ViewBag
+            ViewBag.Departments = departments;
+
+            // Return the employee list to the view
+            return View(employeeDepartmentList);
+        }
+
         public ActionResult Create()
         {
             DepartmentManager dm = new DepartmentManager();
