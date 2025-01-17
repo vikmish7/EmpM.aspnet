@@ -24,15 +24,15 @@ const sampleData = [
             }
         ];
     
-    //    const employeeData = JSON.parse($('#employeeGrid').attr('data-employee-data'));
-    //// console.log(employeeData)
-    //employeeData.forEach(employee => {
-    //    employee.JoiningDate = new Date(parseInt(employee.JoiningDate.substr(6))); // Convert `/Date(...)` to a Date object
-    //});
+       const employeeData = JSON.parse($('#employeeGrid').attr('data-employee-data'));
+    // console.log(employeeData)
+    employeeData.forEach(employee => {
+       employee.JoiningDate = new Date(parseInt(employee.JoiningDate.substr(6))); // Convert `/Date(...)` to a Date object
+    });
     
     $("#employeeGrid").kendoGrid({
         dataSource: {
-            data: sampleData, // Use the parsed employee data
+            data: employeeData, // Use the parsed employee data
             pageSize: 10 // Set the number of records per page
         },
         pageable: true, // Enable pagination

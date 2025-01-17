@@ -226,6 +226,7 @@
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Scripts\__tests__\employee.test.js" />
+    <Content Include="Views\Employee\KendoUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,10 +295,9 @@
   <Target Name="AfterBuild">
   </Target> -->
   <PropertyGroup>
-  <TypeScriptToolsVersion>5.7.1</TypeScriptToolsVersion>
-</PropertyGroup>
-
-<Target Name="BuildTypeScript" BeforeTargets="Build">
-  <Exec Command="npm run tsc -- --project &quot;$(ProjectDir)tsconfig.json&quot;" />
-</Target>
+    <TypeScriptToolsVersion>5.7.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <Target Name="BuildTypeScript" BeforeTargets="Build">
+    <Exec Command="npm run tsc -- --project &quot;$(ProjectDir)tsconfig.json&quot;" />
+  </Target>
 </Project>

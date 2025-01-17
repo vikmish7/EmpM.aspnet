@@ -31,7 +31,7 @@ namespace EmployeeManagementApp.Controllers
         }
 
 
-        public ActionResult Kendo()
+        public ActionResult KendoUI()
         {
             // Fetch employees with their department details
             List<EmployeeDepartmentViewModel> employeeDepartmentList = edm.GetAllEmployeeDepartment();
