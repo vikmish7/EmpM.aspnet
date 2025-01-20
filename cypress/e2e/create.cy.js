@@ -19,6 +19,21 @@ describe('Create Employee Form', () => {
     cy.get('input[type="submit"]').should('exist');
   });
 
+  it('should show an alert for invalid EmployeeName', () => {
+    cy.visit('/Employee/Create');
+
+    // Leave EmployeeName empty
+    cy.get('input[name="EmployeeName"]').clear();
+
+    // Stub the alert window and verify its message
+    cy.on('window:alert', (alertText) => {
+        expect(alertText).to.equal('Please fill out all required fields correctly.');
+    });
+
+    // Submit the form
+    cy.get('form').submit();
+});
+
 });
   describe('Red border for invalid input tests', () => {
 
@@ -106,16 +121,36 @@ it('should apply red border for all invalid inputs', () => {
   
   it('should prevent form submission when EmployeeName is invalid', () => {
     cy.visit('/Employee/Create');
+        // Populate all fields with valid data except EmployeeName
+        cy.get('input[name="Designation"]').type('Valid Designation');
+        cy.get('input[name="NID"]').type('123456');
+        cy.get('input[name="JoiningDate"]').type('2023-12-31');
+        cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+        cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+    
     cy.get('input[name="EmployeeName"]').clear(); // Empty value to trigger validation
-    cy.get('form').submit();
     cy.intercept('POST', '/Employee/Create').as('createEmployee');
-    cy.wait(500);
-    cy.get('@createEmployee.all').should('have.length', 0); // No POST request
+
+    // Submit the form
+    cy.get('form').submit();
+
+    // Assert no POST request was made
+    cy.wait(500); // Optional: wait a short time to ensure no request is made
+    cy.get('@createEmployee.all').should('have.length', 0);
   });
 
 
 it('should prevent form submission when Designation is invalid', () => {
   cy.visit('/Employee/Create');
+      // Populate all fields with valid data except EmployeeName
+      cy.get('input[name="EmployeeName"]').type('Manny Doe');
+      cy.get('input[name="NID"]').type('123456');
+
+      cy.get('input[name="JoiningDate"]').type('2023-12-31');
+
+      cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+      cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+  
   cy.get('input[name="Designation"]').clear().type('1234'); // Invalid input
   cy.get('form').submit();
   cy.intercept('POST', '/Employee/Create').as('createEmployee');
@@ -125,6 +160,12 @@ it('should prevent form submission when Designation is invalid', () => {
 
 it('should prevent form submission when NID is invalid', () => {
   cy.visit('/Employee/Create');
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="JoiningDate"]').type('2023-12-31');
+  cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+
   cy.get('input[name="NID"]').clear().type('abcde'); // Invalid input
   cy.get('form').submit();
   cy.intercept('POST', '/Employee/Create').as('createEmployee');
@@ -134,6 +175,13 @@ it('should prevent form submission when NID is invalid', () => {
 
 it('should prevent form submission when JoiningDate is invalid', () => {
   cy.visit('/Employee/Create');
+
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="NID"]').type('123456');
+  cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+
   cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input');
   cy.get('form').submit();
   cy.intercept('POST', '/Employee/Create').as('createEmployee');
@@ -143,6 +191,12 @@ it('should prevent form submission when JoiningDate is invalid', () => {
 
 it('should prevent form submission when DepartmentId is invalid', () => {
   cy.visit('/Employee/Create');
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="NID"]').type('123456');
+  cy.get('input[name="JoiningDate"]').type('2023-12-31');
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+
   cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
   cy.get('form').submit();
   cy.intercept('POST', '/Employee/Create').as('createEmployee');
@@ -152,6 +206,12 @@ it('should prevent form submission when DepartmentId is invalid', () => {
 
 it('should prevent form submission when BloodGroup is invalid', () => {
   cy.visit('/Employee/Create');
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="NID"]').type('123456');
+  cy.get('input[name="JoiningDate"]').type('2023-12-31');
+  cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+
   cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
   cy.get('form').submit();
   cy.intercept('POST', '/Employee/Create').as('createEmployee');
@@ -279,50 +339,7 @@ cy.get('select[name="BloodGroup"]').closest('.form-group')
 
   
   
-  
 
-// ------------------------------------
-  // it('should allow submission when all fields are valid', () => {
-  //   cy.visit('/Employee/Create');
-  // // Intercept the request to fetch departments (adjust the URL based on your application)
-  // cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
-
-  // // Wait for the departments data to load
-  // cy.wait('@getDepartments');
-
-  // // Ensure the department dropdown is populated
-  // cy.get('select[name="DepartmentId"]').find('option').should('have.length.greaterThan', 1);
-
-  //   // Fill out the form with valid data
-  //   cy.get('input[name="EmployeeName"]').type('John Doe');
-  //   cy.get('input[name="Designation"]').type('Manager');
-  //   cy.get('input[name="NID"]').type('123456789');
-  //   cy.get('input[name="JoiningDate"]').type('2023-01-01');
-  //   cy.get('select[name="DepartmentId"]')
-  //   .find('option')
-  //   .each(($option, index, $options) => {
-  //     cy.log($option.text()); // Log all the options available
-  //   });
-  //   cy.get('select[name="DepartmentId"]')
-  //   .select('Information Technology', { force: true });
-  //   cy.get('select[name="BloodGroup"]')
-  //   .find('option')
-  //   .each(($option, index, $options) => {
-  //     cy.log($option.text()); // Log all the options available
-  //   });
-  //   cy.get('select[name="BloodGroup"]')
-  //   .select('A+', { force: true });
-
-  //   // Submit the form
-  //   cy.get('input[type="submit"]').click();
-
-  //   // Verify redirection to the index page (assuming it's triggered on success)
-  //   cy.url().should('include', '/Employee');
-  //   cy.get('#employeeTable tbody tr').last().within(() => {
-  //     cy.get('td').eq(1).should('contain', 'John Doe'); // Validate the new employee name in the table
-  //     cy.get('td').eq(2).should('contain', 'Manager'); // Validate the designation
-  //   });
-  // });
 
   // it('should show an alert if Employee Name is empty and prevent form submission', () => {
   //   // Fill the form except EmployeeName
@@ -357,144 +374,9 @@ cy.get('select[name="BloodGroup"]').closest('.form-group')
   //   // Assert that the form was not submitted by checking that the page URL has not changed
   //   cy.url().should('include', '/Employee/Create'); // Ensure the form was not submitted and the user stays on the form page
   // });
-// ------------------------------
-
-    // cy.visit('/Employee');
-    // cy.wait('@createEmployee').then(({ request, response }) => {
-    //   console.log('Actual request body:', request.body);
-  
-    //   // Assert that the request payload contains the correct values
-    //   expect(request.body).to.include({
-    //     EmployeeName: 'Manny Doe',
-    //     Designation: 'Manager',
-    //     NID: '123456789',
-    //     JoiningDate: '2023-01-01',
-    //     DepartmentId: '1', // Adjust according to selected department
-    //     BloodGroup: 'A+', // Adjust according to selected blood group
-    //   });
-  
-    //   // Assert that the mocked response is successful
-    //   expect(response.body.success).to.eq(true);
-    //   cy.url().should('include', '/Employee/Create'); // Ensure we are still on the create page
-    //   cy.location('pathname').should('eq', '/Employee/Create'); // Make sure we are still at the correct URL
-  
-    //   // Forcefully redirect by manually visiting /Employee/Index
-    //   cy.visit('/Employee'); // Manually visit the employee index page
-
-    // });
-    // Wait for the mocked POST request to be triggered
-    // cy.url().should('include', '/Employee');  // Assuming the redirect happens to /Employee
-    // cy.url().should('include', '/Employee'); // Check that we are now on the employee list page
-
-    // Verify that the form was submitted (you can check if the success response was received)
-    // cy.location('pathname').should('include', '/Employee');
-    // cy.get('#employeeTable tbody tr').last().within(() => {
-    //   cy.get('td').eq(1).should('contain', 'John Doe'); // Validate the new employee name in the table
-    //   cy.get('td').eq(2).should('contain', 'Manager'); // Validate the designation
-    // });
 
 
 
   
 
-  // it('should show an error when required fields are missing or invalid', () => {
-  //   cy.visit('/Employee/Create');
-    
-  //   // Intercept the GET request to fetch departments (adjust the URL based on your application)
-  //   cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
-    
-  //   // Wait for the departments data to load
-  //   cy.wait('@getDepartments');
-    
-  //   // Ensure the department dropdown is populated
-  //   cy.get('select[name="DepartmentId"]').find('option').should('have.length.greaterThan', 1);
-    
-  //   // Leave the form fields blank or with invalid data
-  //   cy.get('input[name="EmployeeName"]').clear(); // Empty employee name
-  //   cy.get('input[name="Designation"]').clear(); // Empty designation
-  //   cy.get('input[name="NID"]').clear(); // Empty NID
-  //   cy.get('input[name="JoiningDate"]').type('2023-01-01');
-  
-  //   // Simulate invalid form submission by submitting the form without filling all required fields
-  //   cy.get('form').submit(); // Trigger form submission
-  
-  //   // Check if the form stayed on the same page (indicating validation failure)
-  //   cy.url().should('include', '/Employee/Create'); // We should still be on the create page
-    
-  //   // Check for visible error messages for missing or invalid fields
-  //   cy.get('.validation-summary-errors').should('exist'); // Assuming there's a summary of validation errors
-    
-  //   // Optionally, check individual error messages
-  //   cy.get('input[name="EmployeeName"]')
-  //     .parents('.form-group')
-  //     .should('have.class', 'has-error'); // Check if there's an error state on the employee name field
-  
-  //   cy.get('input[name="Designation"]')
-  //     .parents('.form-group')
-  //     .should('have.class', 'has-error'); // Check if there's an error state on the designation field
-  // });
-  
 
-
-// describe('Employee Creation Form - Backend Response', () => {
-//   beforeEach(() => {
-//     cy.intercept('POST', '/Employee/Create', (req) => {
-//       req.reply({
-//         statusCode: 200,
-//         body: 'SuccessFull',
-//       });
-//     }).as('createEmployee');
-//   });
-
-//   it('should handle successful form submission', () => {
-//     cy.visit('/Employee/Create');
-
-//     // Fill out the form
-//     cy.get('input[name="EmployeeName"]').type('John Doe');
-//     cy.get('input[name="Designation"]').type('Manager');
-//     cy.get('input[name="NID"]').type('123456789');
-//     cy.get('input[name="JoiningDate"]').type('2023-01-01');
-//     cy.get('select[name="DepartmentId"]').select('1');
-//     cy.get('select[name="BloodGroup"]').select('A+');
-
-//     // Submit the form
-//     cy.get('input[type="submit"]').click();
-
-//     // Wait for intercept to verify request is sent
-//     cy.wait('@createEmployee').then(({ request }) => {
-//       console.log('Response:', request); // Debug the response
-
-//       // expect(request.body).to.include('John Doe'); // Check form data
-//     });
-
-//     // Verify redirection or success message
-//     cy.url().should('include', '/Employee');
-//   });
-
-//   // it('should display error message on backend failure', () => {
-//   //   // Mock a failed response
-//   //   cy.intercept('POST', '/Employee/Create', {
-//   //     statusCode: 500,
-//   //     body: 'Failed',
-//   //   }).as('createEmployeeError');
-
-//   //   cy.visit('/Employee/Create');
-
-//   //   // Fill out the form with valid data
-//   //   cy.get('input[name="EmployeeName"]').type('Jane Doe');
-//   //   cy.get('input[name="Designation"]').type('Developer');
-//   //   cy.get('input[name="NID"]').type('987654321');
-//   //   cy.get('input[name="JoiningDate"]').type('2022-06-01');
-//   //   cy.get('select[name="DepartmentId"]').select('2');
-//   //   cy.get('select[name="BloodGroup"]').select('B+');
-
-//   //   // Submit the form
-//   //   cy.get('input[type="submit"]').click();
-
-//   //   // Wait for intercept
-//   //   cy.wait('@createEmployeeError');
-
-//   //   // Verify error message display
-//   //   cy.contains('Employee inserted ERROR').should('be.visible');
-//   // });
-// });

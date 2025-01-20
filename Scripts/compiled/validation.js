@@ -1,91 +1,6 @@
 "use strict";
 $(document).ready(function () {
-    console.log("---------------extrafunc.ts loaded and msbuild re check--------------");
-    // const validateInput = (input: JQuery<HTMLElement>): boolean => {
-    //     const value = input.val();
-    //     if (typeof value === 'string') {
-    //         const trimmedValue = value.trim();
-    //         if (!trimmedValue) {
-    //             input.css('border', '1px solid red');
-    //             return false; // Invalid input
-    //         } else {
-    //             input.css('border', '1px solid green');
-    //             return true; // Valid input
-    //         }
-    //     } else {
-    //         input.css('border', '1px solid red');
-    //         return false; // Invalid input
-    //     }
-    // };
-    // // On input: Validate whenever the value changes
-    // $('input[name="EmployeeName"]').on('input', function () {
-    //     validateInput($(this));
-    // });
-    // // On blur: Validate when the user leaves the input field
-    // $('input[name="EmployeeName"]').on('blur', function () {
-    //     validateInput($(this));
-    // });
-    // // On focus: Reset the border (optional)
-    // $('input[name="EmployeeName"]').on('focus', function () {
-    //     $(this).css('border', '1px solid #ccc'); // Reset to default border color
-    // });
-    // $('form').on('submit', function (e: JQuery.TriggeredEvent) {
-    //     const isEmployeeNameValid = validateInput($('input[name="EmployeeName"]'));
-    //     if (!isEmployeeNameValid) {
-    //         e.preventDefault(); // Prevent form submission
-    //         alert('Please fill out the Employee Name field.');
-    //     }
-    // });
-    // const validateInput = (input: JQuery<HTMLElement>, type: 'text' | 'alpha' | 'numeric'): boolean => {
-    //     const value = input.val();
-    //     if (typeof value === 'string') {
-    //         const trimmedValue = value.trim();
-    //         let isValid = false;
-    //         switch (type) {
-    //             case 'text': // Generic non-empty check
-    //                 isValid = !!trimmedValue;
-    //                 break;
-    //             case 'alpha': // Only alphabets
-    //                 isValid = /^[A-Za-z\s]+$/.test(trimmedValue);
-    //                 break;
-    //             case 'numeric': // Only numbers
-    //                 isValid = /^[0-9]+$/.test(trimmedValue);
-    //                 break;
-    //         }
-    //         input.css('border', isValid ? '1px solid green' : '1px solid red');
-    //         return isValid;
-    //     }
-    //     input.css('border', '1px solid red');
-    //     return false;
-    // };
-    // // Bind validation events for EmployeeName
-    // $('input[name="EmployeeName"]').on('input blur', function () {
-    //     validateInput($(this), 'text');
-    // }).on('focus', function () {
-    //     $(this).css('border', '1px solid #ccc'); // Reset to default
-    // });
-    // // Bind validation events for Designation (alphabets only)
-    // $('input[name="Designation"]').on('input blur', function () {
-    //     validateInput($(this), 'text');
-    // }).on('focus', function () {
-    //     $(this).css('border', '1px solid #ccc'); // Reset to default
-    // });
-    // // Bind validation events for NID (numeric only)
-    // $('input[name="NID"]').on('input blur', function () {
-    //     validateInput($(this), 'numeric');
-    // }).on('focus', function () {
-    //     $(this).css('border', '1px solid #ccc'); // Reset to default
-    // });
-    // // On form submission
-    // $('form').on('submit', function (e: JQuery.TriggeredEvent) {
-    //     const isEmployeeNameValid = validateInput($('input[name="EmployeeName"]'), 'text');
-    //     const isDesignationValid = validateInput($('input[name="Designation"]'), 'alpha');
-    //     const isNIDValid = validateInput($('input[name="NID"]'), 'numeric');
-    //     if (!isEmployeeNameValid || !isDesignationValid || !isNIDValid) {
-    //         e.preventDefault(); // Prevent form submission
-    //         alert('Please fill out all required fields correctly.');
-    //     }
-    // });
+    console.log("---------------Validation.ts loaded and msbuild re check--------------");
     var validateInput = function (input, type) {
         var _a, _b, _c, _d, _e, _f, _g;
         var isValid = false;
@@ -118,10 +33,10 @@ $(document).ready(function () {
     };
     // Validation bindings for other fields (as before)
     $('input[name="EmployeeName"]').on('input blur', function () {
-        validateInput($(this), 'text');
+        validateInput($(this), 'alpha');
     });
     $('input[name="Designation"]').on('input blur', function () {
-        validateInput($(this), 'text');
+        validateInput($(this), 'alpha');
     });
     $('input[name="NID"]').on('input blur', function () {
         validateInput($(this), 'numeric');
@@ -138,7 +53,7 @@ $(document).ready(function () {
     });
     // On form submission
     $('form').on('submit', function (e) {
-        var isEmployeeNameValid = validateInput($('input[name="EmployeeName"]'), 'text');
+        var isEmployeeNameValid = validateInput($('input[name="EmployeeName"]'), 'alpha');
         var isDesignationValid = validateInput($('input[name="Designation"]'), 'alpha');
         var isNIDValid = validateInput($('input[name="NID"]'), 'numeric');
         var isJoiningDateValid = validateInput($('input[name="JoiningDate"]'), 'date');
@@ -148,10 +63,6 @@ $(document).ready(function () {
             e.preventDefault(); // Prevent form submission
             alert('Please fill out all required fields correctly.');
         }
-        // if (!isEmployeeNameValid || !isDesignationValid || !isNIDValid || !isJoiningDateValid ) {
-        //     e.preventDefault(); // Prevent form submission
-        //     alert('Please fill out all required fields correctly.');
-        // }
     });
 });
 //# sourceMappingURL=validation.js.map

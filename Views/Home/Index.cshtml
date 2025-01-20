@@ -4,10 +4,22 @@
 
 <div class="jumbotron">
     <h2>ASP.NET Employee Mgmt Project</h2>
-    <p class="">Project demostrating basic CRUD functionality, with loacl SQL server Stored procedure calls.</p>
+    <p class="">Project demostrating basic CRUD functionality, with local SQL server stored procedure calls.</p>
     @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 </div>
-<p>Start by creating employees data</p>
+
+<h4>Start by creating employees data</h4>
+<a href="@Url.Action("Create", "Employee")">Create --></a>
+
+<h4>List of Employee data</h4>
+<a href="@Url.Action("Index", "Employee")">List --></a>
+
+<h4>Kendo UI table with employees data</h4>
+<a href="@Url.Action("KendoUI", "Employee")">Kendo UI Table --></a>
+
+<div style="height:100px">
+
+</div>
 @*<div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>

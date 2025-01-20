@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create Employee Page</h2>
+<h2>Employee Creation</h2>
 <hr />
 
 <br />
@@ -26,17 +26,6 @@
         <input type="date" name="JoiningDate" placeholder="Enter Employee Joining Date" class="form-control">
     </div>
 
-    @* <div class="form-group">
-            <select class="form-control" name="DepartmentId">
-                <option value="0">-Select-</option>
-                @foreach (var departments in Model)
-                {
-                    <option value="@departments.DepartmentId">@departments.Name</option>
-                }
-
-            </select>
-
-        </div> *@
     <div class="form-group" id="sel" data-departments-url="@Url.Action("GetDepartments", "Employee")">
         <select id="DepartmentId" name="DepartmentId" class="form-control">
             <option value="0">-Select-</option>
