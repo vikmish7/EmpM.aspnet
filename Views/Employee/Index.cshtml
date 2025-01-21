@@ -63,9 +63,9 @@
 
 
 <h2>Employee Information</h2>
-<hr/>
+<hr />
 
-<br/>
+<br />
 <div id="employeeGrid" data-employee-data='@Html.Raw(Json.Encode(Model))'></div>
 
 <table class="table" id="employeeTable">
@@ -193,5 +193,7 @@
 <script src="~/Scripts/kendo-ui-license.js" defer></script>
 
 
-<script src="~/Scripts/Employee.js" defer></script>
+@*<script src="~/Scripts/Employee.js" defer></script>*@
+<script src="~/instrumented/Scripts/Employee.js" defer></script>
+
 @*<script src="~/Scripts/compiled/kendogrid.js" defer></script>*@

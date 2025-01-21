@@ -41,35 +41,35 @@ describe('Create Employee Form', () => {
     cy.visit('/Employee/Create');
     cy.get('input[name="EmployeeName"]').clear().blur();
     cy.get('input[name="EmployeeName"]').closest('.form-group')
-      .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   });
   
   it('should apply red border for invalid Designation input', () => {
     cy.visit('/Employee/Create');
     cy.get('input[name="Designation"]').clear().type('1234').blur();
     cy.get('input[name="Designation"]').closest('.form-group')
-      .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   });
   
   it('should apply red border for invalid NID input', () => {
     cy.visit('/Employee/Create');
     cy.get('input[name="NID"]').clear().type('abcde').blur();
     cy.get('input[name="NID"]').closest('.form-group')
-      .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   });
   
   it('should apply red border for invalid JoiningDate input', () => {
     cy.visit('/Employee/Create');
     cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input').blur();
     cy.get('input[name="JoiningDate"]').closest('.form-group')
-      .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   });
   
   it('should apply red border for invalid DepartmentId selection', () => {
     cy.visit('/Employee/Create');
     cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
     cy.get('select[name="DepartmentId"]').closest('.form-group')
-      .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   });
   
   it('should apply red border for invalid BloodGroup selection', () => {
@@ -86,33 +86,33 @@ it('should apply red border for all invalid inputs', () => {
   // Trigger validation errors for Employee Name
   cy.get('input[name="EmployeeName"]').clear().blur();
   cy.get('input[name="EmployeeName"]').closest('.form-group')
-    .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)'); // Red border
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)'); // Red border
 
   // Trigger validation errors for Designation
   cy.get('input[name="Designation"]').clear().type('1234').blur(); // Invalid input: numbers
   cy.get('input[name="Designation"]').closest('.form-group')
-    .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
   // Trigger validation errors for NID
   cy.get('input[name="NID"]').clear().type('abcde').blur(); // Invalid input: non-numeric
   cy.get('input[name="NID"]').closest('.form-group')
-    .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
   // Trigger validation errors for Joining Date
   cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input').blur(); // Invalid date
   cy.get('input[name="JoiningDate"]').closest('.form-group')
-    .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   
   cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
 
   cy.get('select[name="DepartmentId"]').closest('.form-group')
-  .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+  .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
   // Trigger validation errors for Blood Group
   cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
 
   cy.get('select[name="BloodGroup"]').closest('.form-group')
-  .should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+  .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 });
   });
 
@@ -247,22 +247,22 @@ it('should prevent submission when all fields are invalid', () => {
 
     // Assert validation styles on the wrapper element
 cy.get('input[name="EmployeeName"]').closest('.form-group')
-.should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)'); // Red border on form-group
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)'); // Red border on form-group
 
 cy.get('input[name="Designation"]').closest('.form-group')
-.should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
 cy.get('input[name="NID"]').closest('.form-group')
-.should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
 cy.get('input[name="JoiningDate"]').closest('.form-group')
-.should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
 cy.get('select[name="DepartmentId"]').closest('.form-group')
-.should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
 cy.get('select[name="BloodGroup"]').closest('.form-group')
-.should('have.css', 'border', '0.740741px solid rgb(255, 0, 0)');
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
   // Assert that the form was not submitted (no POST request was made)
   cy.intercept('POST', '/Employee/Create').as('createEmployee');
