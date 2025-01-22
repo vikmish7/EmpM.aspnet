@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    console.log("---------------Validation.ts loaded and msbuild re check--------------");
+    console.log("---------------Validation.ts loadedk--------------");
     
     const validateInput = (
         input: JQuery<HTMLElement>,
