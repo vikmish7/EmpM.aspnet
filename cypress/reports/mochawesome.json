@@ -1,0 +1,219 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-22T10:43:39.128Z",
+    "end": "2025-01-22T10:43:49.642Z",
+    "duration": 10514,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9196f82c-bfe4-4dcd-a466-808ade73415d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\loader-edit.cy.js",
+      "file": "cypress\\e2e\\loader-edit.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f41d07e9-16fd-40c6-a151-13cc39221bbb",
+          "title": "Employee Table Loader",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display loader and then show the table",
+              "fullTitle": "Employee Table Loader should display loader and then show the table",
+              "timedOut": null,
+              "duration": 2802,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/Employee'); // Adjust the route as per your app\n// Loader should be visible initially\ncy.get('#loader').should('be.visible');\n// Loader should disappear and table should be visible after 1.5 seconds\n// cy.wait(1800); // Adjust the wait time to match your loader timeout\n// cy.get('#loader', { timeout: 6000 }).should('have.css', 'display', 'none');\ncy.get('#loader', {\n  timeout: 6000\n}).should('not.be.visible') // Checks visibility\n.and('have.css', 'display', 'none'); // Checks display property\n// cy.get('#loader').should('not.exist');\ncy.get('#employeeTable').should('be.visible');",
+              "err": {},
+              "uuid": "705697c9-6f3f-48e5-815b-c836455c55ba",
+              "parentUUID": "f41d07e9-16fd-40c6-a151-13cc39221bbb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "705697c9-6f3f-48e5-815b-c836455c55ba"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2802,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "de608ed5-9747-49f5-9ca4-45a5ce82db9c",
+          "title": "Edit Button Functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should toggle view and edit modes when Edit is clicked",
+              "fullTitle": "Edit Button Functionality should toggle view and edit modes when Edit is clicked",
+              "timedOut": null,
+              "duration": 1943,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/Employee');\n// Click the Edit button on the first row\ncy.get('#employeeTable tbody tr').first().within(() => {\n  cy.get('.edit-btn').click();\n  // Verify view-mode is hidden and edit-mode is visible\n  cy.get('.view-mode').should('not.be.visible');\n  cy.get('.edit-mode').should('be.visible');\n  // Verify Save button is visible\n  cy.get('.save-btn').should('be.visible');\n});",
+              "err": {},
+              "uuid": "d431dce5-0634-4966-b3bb-0ff30e79fef8",
+              "parentUUID": "de608ed5-9747-49f5-9ca4-45a5ce82db9c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d431dce5-0634-4966-b3bb-0ff30e79fef8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1943,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "77f1dce9-8fd1-4468-8a5f-f22282dd5ec5",
+          "title": "Save Employee Data",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should simulate employee details update without making an actual API call",
+              "fullTitle": "Save Employee Data should simulate employee details update without making an actual API call",
+              "timedOut": null,
+              "duration": 3029,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/Employee'); // Replace with your app's route\n// Interact with the form to edit employee details\ncy.get('.edit-btn').first().click();\n// Use the 'input' selectors by the 'class' or 'type' to interact with the fields\ncy.get('input.edit-mode').eq(0).clear().type('Updated Name'); // Employee Name\ncy.get('input.edit-mode').eq(1).clear().type('Updated Designation'); // Designation\n// Set up intercept for the POST request to mock the response\ncy.intercept('POST', '/Employee/Edit', {\n  statusCode: 200,\n  // Simulate a successful response\n  body: {\n    status: 'success',\n    message: 'Employee updated successfully'\n  }\n}).as('editEmployee');\n// Click the save button to simulate saving the changes\ncy.get('.save-btn').first().click();\n// Wait for the mocked API call\ncy.wait('@editEmployee').then(({\n  request,\n  response\n}) => {\n  console.log('Actual request body:', request.body);\n  // Assert that the request payload contains the correct values\n  // expect(request.body).to.have.property('EmployeeName', 'Updated Name');\n  // expect(request.body).to.have.property('Designation', 'Updated Designation');\n  expect(request.body).to.include({\n    EmployeeName: 'Updated Name',\n    Designation: 'Updated Designation'\n  });\n  // Assert that the mocked response is successful\n  expect(response.body.status).to.eq('success');\n  cy.get('.view-mode').eq(0).invoke('text', 'Updated Name');\n  cy.get('.view-mode').eq(1).invoke('text', 'Updated Designation');\n});\ncy.get('.view-mode').eq(0).should('contain', 'Updated Name'); // Check updated name\ncy.get('.view-mode').eq(1).should('contain', 'Updated Designation'); // Check",
+              "err": {},
+              "uuid": "8f940381-fd0d-480d-bb79-d92ec0a9d3fe",
+              "parentUUID": "77f1dce9-8fd1-4468-8a5f-f22282dd5ec5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8f940381-fd0d-480d-bb79-d92ec0a9d3fe"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3029,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "43749859-b02f-461d-a5be-692e166480f7",
+          "title": "Save Button Error Handling",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display an error message on failed save",
+              "fullTitle": "Save Button Error Handling should display an error message on failed save",
+              "timedOut": null,
+              "duration": 2486,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/Employee');\n// Wait for the table to load\n// Intercept the AJAX call to simulate a failure\ncy.intercept('POST', '/Employee/Edit', {\n  statusCode: 500\n}).as('saveEmployee');\n// Click the Edit button\ncy.get('#employeeTable tbody tr').first().within(() => {\n  cy.get('.edit-btn').click();\n  // Update the employee name\n  cy.get('input').first().clear().type('Updated Name');\n});\n// Click the Save button after setting up the intercept\ncy.get('#employeeTable tbody tr').first().within(() => {\n  cy.get('.save-btn').click();\n});\n// Verify that the AJAX request was made\ncy.wait('@saveEmployee');\n// Verify error alert is shown\ncy.on('window:alert', str => {\n  expect(str).to.equal('Error updating employee details.');\n});",
+              "err": {},
+              "uuid": "f72a970c-8bbb-4635-b32a-6bdba8d87f23",
+              "parentUUID": "43749859-b02f-461d-a5be-692e166480f7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f72a970c-8bbb-4635-b32a-6bdba8d87f23"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2486,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

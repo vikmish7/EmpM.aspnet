@@ -78,3 +78,4 @@ $(document).ready(() => {
 
     });
 });
+// npx cypress run --headless --browser chrome --reporter mochawesome --reporter-options reportDir=cypress/reports
