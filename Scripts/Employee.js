@@ -186,3 +186,6 @@ $(document).ready(function () {
 
    
 });
+
+
+// npx istanbul instrument Scripts/Employee.js --output instrumented/Employee.js

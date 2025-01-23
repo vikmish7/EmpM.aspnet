@@ -1,6 +1,6 @@
 "use strict";
 $(document).ready(function () {
-    console.log("---------------Validation.ts loaded and msbuild re check--------------");
+    console.log("---------------Validation.ts loadedk--------------");
     var validateInput = function (input, type) {
         var _a, _b, _c, _d, _e, _f, _g;
         var isValid = false;
@@ -65,4 +65,5 @@ $(document).ready(function () {
         }
     });
 });
+// npx cypress run --headless --browser chrome --reporter mochawesome --reporter-options reportDir=cypress/reports
 //# sourceMappingURL=validation.js.map
