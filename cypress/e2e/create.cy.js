@@ -1,3 +1,4 @@
+
 describe('Create Employee Form', () => {
   beforeEach(() => {
     // Visit the page containing the form
@@ -39,244 +40,282 @@ describe('Create Employee Form', () => {
 
 
 
-//   describe('Red border for invalid input tests', () => {
+  describe('Red border for invalid input tests', () => {
 
-//   it('should apply red border for invalid EmployeeName input', () => {
-//     cy.visit('/Employee/Create');
-//     cy.get('input[name="EmployeeName"]').clear().blur();
-//     cy.get('input[name="EmployeeName"]').closest('.form-group')
-//       .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
-//   });
+  it('should apply red border for invalid EmployeeName input', () => {
+    cy.visit('/Employee/Create');
+    cy.get('input[name="EmployeeName"]').clear().blur();
+    cy.get('input[name="EmployeeName"]').closest('.form-group')
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  });
   
-//   it('should apply red border for invalid Designation input', () => {
-//     cy.visit('/Employee/Create');
-//     cy.get('input[name="Designation"]').clear().type('1234').blur();
-//     cy.get('input[name="Designation"]').closest('.form-group')
-//       .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
-//   });
+  it('should apply red border for invalid Designation input', () => {
+    cy.visit('/Employee/Create');
+    cy.get('input[name="Designation"]').clear().type('1234').blur();
+    cy.get('input[name="Designation"]').closest('.form-group')
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  });
   
-//   it('should apply red border for invalid NID input', () => {
-//     cy.visit('/Employee/Create');
-//     cy.get('input[name="NID"]').clear().type('abcde').blur();
-//     cy.get('input[name="NID"]').closest('.form-group')
-//       .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
-//   });
+  it('should apply red border for invalid NID input', () => {
+    cy.visit('/Employee/Create');
+    cy.get('input[name="NID"]').clear().type('abcde').blur();
+    cy.get('input[name="NID"]').closest('.form-group')
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  });
   
-//   it('should apply red border for invalid JoiningDate input', () => {
-//     cy.visit('/Employee/Create');
-//     cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input').blur();
-//     cy.get('input[name="JoiningDate"]').closest('.form-group')
-//       .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
-//   });
+  it('should apply red border for invalid JoiningDate input', () => {
+    cy.visit('/Employee/Create');
+    cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input').blur();
+    cy.get('input[name="JoiningDate"]').closest('.form-group')
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  });
   
-//   it('should apply red border for invalid DepartmentId selection', () => {
-//     cy.visit('/Employee/Create');
-//     cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
-//     cy.get('select[name="DepartmentId"]').closest('.form-group')
-//       .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
-//   });
+  it('should apply red border for invalid DepartmentId selection', () => {
+    cy.visit('/Employee/Create');
+    cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
+    cy.get('select[name="DepartmentId"]').closest('.form-group')
+      .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  });
   
-//   it('should apply red border for invalid BloodGroup selection', () => {
-//     cy.visit('/Employee/Create');
-//     cy.get('#BloodGroup').select('-Select-', { force: true });
-//     // Validate if the border turns red (invalid selection)
-//     cy.get('#BloodGroup').closest('.form-group')
-//         .should('have.css', 'border', '0px none rgb(51, 51, 51)');
-// });
+  it('should apply red border for invalid BloodGroup selection', () => {
+    cy.visit('/Employee/Create');
+    cy.get('#BloodGroup').select('-Select-', { force: true });
+    // Validate if the border turns red (invalid selection)
+    cy.get('#BloodGroup').closest('.form-group')
+        .should('have.css', 'border', '0px none rgb(51, 51, 51)');
+});
 
-// it('should apply red border for all invalid inputs', () => {
-//   cy.visit('/Employee/Create'); // Adjust the path to your form page
+it('should apply red border for all invalid inputs', () => {
+  cy.visit('/Employee/Create'); // Adjust the path to your form page
 
-//   // Trigger validation errors for Employee Name
-//   cy.get('input[name="EmployeeName"]').clear().blur();
-//   cy.get('input[name="EmployeeName"]').closest('.form-group')
-//     .should('have.css', 'border', '1px solid rgb(255, 0, 0)'); // Red border
+  // Trigger validation errors for Employee Name
+  cy.get('input[name="EmployeeName"]').clear().blur();
+  cy.get('input[name="EmployeeName"]').closest('.form-group')
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)'); // Red border
 
-//   // Trigger validation errors for Designation
-//   cy.get('input[name="Designation"]').clear().type('1234').blur(); // Invalid input: numbers
-//   cy.get('input[name="Designation"]').closest('.form-group')
-//     .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  // Trigger validation errors for Designation
+  cy.get('input[name="Designation"]').clear().type('1234').blur(); // Invalid input: numbers
+  cy.get('input[name="Designation"]').closest('.form-group')
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-//   // Trigger validation errors for NID
-//   cy.get('input[name="NID"]').clear().type('abcde').blur(); // Invalid input: non-numeric
-//   cy.get('input[name="NID"]').closest('.form-group')
-//     .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  // Trigger validation errors for NID
+  cy.get('input[name="NID"]').clear().type('abcde').blur(); // Invalid input: non-numeric
+  cy.get('input[name="NID"]').closest('.form-group')
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-//   // Trigger validation errors for Joining Date
-//   cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input').blur(); // Invalid date
-//   cy.get('input[name="JoiningDate"]').closest('.form-group')
-//     .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  // Trigger validation errors for Joining Date
+  cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input').blur(); // Invalid date
+  cy.get('input[name="JoiningDate"]').closest('.form-group')
+    .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
   
-//   cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
+  cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
 
-//   cy.get('select[name="DepartmentId"]').closest('.form-group')
-//   .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+  cy.get('select[name="DepartmentId"]').closest('.form-group')
+  .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-//   // Trigger validation errors for Blood Group
-//   cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
+  // Trigger validation errors for Blood Group
+  cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
 
-//   cy.get('select[name="BloodGroup"]').closest('.form-group')
-//   .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
-// });
-//   });
+  cy.get('select[name="BloodGroup"]').closest('.form-group')
+  .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+});
+  });
 
-//   describe('Prevent form submission invalid input tests', () => {
+  describe('Prevent form submission invalid input tests', () => {
 
   
-//   it('should prevent form submission when EmployeeName is invalid', () => {
-//     cy.visit('/Employee/Create');
-//         // Populate all fields with valid data except EmployeeName
-//         cy.get('input[name="Designation"]').type('Valid Designation');
-//         cy.get('input[name="NID"]').type('123456');
-//         cy.get('input[name="JoiningDate"]').type('2023-12-31');
-//         cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
-//         cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+  it('should prevent form submission when EmployeeName is invalid', () => {
+    cy.visit('/Employee/Create');
+        // Populate all fields with valid data except EmployeeName
+        cy.get('input[name="Designation"]').type('Valid Designation');
+        cy.get('input[name="NID"]').type('123456');
+        cy.get('input[name="JoiningDate"]').type('2023-12-31');
+        cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+        cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
     
-//     cy.get('input[name="EmployeeName"]').clear(); // Empty value to trigger validation
-//     cy.intercept('POST', '/Employee/Create').as('createEmployee');
+    cy.get('input[name="EmployeeName"]').clear(); // Empty value to trigger validation
+    cy.intercept('POST', '/Employee/Create').as('createEmployee');
 
-//     // Submit the form
-//     cy.get('form').submit();
+    // Submit the form
+    cy.get('form').submit();
 
-//     // Assert no POST request was made
-//     cy.wait(500); // Optional: wait a short time to ensure no request is made
-//     cy.get('@createEmployee.all').should('have.length', 0);
-//   });
+    // Assert no POST request was made
+    cy.wait(500); // Optional: wait a short time to ensure no request is made
+    cy.get('@createEmployee.all').should('have.length', 0);
+  });
 
 
-// it('should prevent form submission when Designation is invalid', () => {
-//   cy.visit('/Employee/Create');
-//       // Populate all fields with valid data except EmployeeName
-//       cy.get('input[name="EmployeeName"]').type('Manny Doe');
-//       cy.get('input[name="NID"]').type('123456');
+it('should prevent form submission when Designation is invalid', () => {
+  cy.visit('/Employee/Create');
+      // Populate all fields with valid data except EmployeeName
+      cy.get('input[name="EmployeeName"]').type('Manny Doe');
+      cy.get('input[name="NID"]').type('123456');
 
-//       cy.get('input[name="JoiningDate"]').type('2023-12-31');
+      cy.get('input[name="JoiningDate"]').type('2023-12-31');
 
-//       cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
-//       cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+      cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+      cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
   
-//   cy.get('input[name="Designation"]').clear().type('1234'); // Invalid input
-//   cy.get('form').submit();
-//   cy.intercept('POST', '/Employee/Create').as('createEmployee');
-//   cy.wait(500);
-//   cy.get('@createEmployee.all').should('have.length', 0); // No POST request
-// });
+  cy.get('input[name="Designation"]').clear().type('1234'); // Invalid input
+  cy.get('form').submit();
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+  cy.wait(500);
+  cy.get('@createEmployee.all').should('have.length', 0); // No POST request
+});
 
-// it('should prevent form submission when NID is invalid', () => {
-//   cy.visit('/Employee/Create');
-//   cy.get('input[name="EmployeeName"]').type('Manny Doe');
-//   cy.get('input[name="Designation"]').type('Valid Designation');
-//   cy.get('input[name="JoiningDate"]').type('2023-12-31');
-//   cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
-//   cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+it('should prevent form submission when NID is invalid', () => {
+  cy.visit('/Employee/Create');
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="JoiningDate"]').type('2023-12-31');
+  cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
 
-//   cy.get('input[name="NID"]').clear().type('abcde'); // Invalid input
-//   cy.get('form').submit();
-//   cy.intercept('POST', '/Employee/Create').as('createEmployee');
-//   cy.wait(500);
-//   cy.get('@createEmployee.all').should('have.length', 0); // No POST request
-// });
+  cy.get('input[name="NID"]').clear().type('abcde'); // Invalid input
+  cy.get('form').submit();
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+  cy.wait(500);
+  cy.get('@createEmployee.all').should('have.length', 0); // No POST request
+});
 
-// it('should prevent form submission when JoiningDate is invalid', () => {
-//   cy.visit('/Employee/Create');
+it('should prevent form submission when JoiningDate is invalid', () => {
+  cy.visit('/Employee/Create');
 
-//   cy.get('input[name="EmployeeName"]').type('Manny Doe');
-//   cy.get('input[name="Designation"]').type('Valid Designation');
-//   cy.get('input[name="NID"]').type('123456');
-//   cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
-//   cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="NID"]').type('123456');
+  cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
 
-//   cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input');
-//   cy.get('form').submit();
-//   cy.intercept('POST', '/Employee/Create').as('createEmployee');
-//   cy.wait(500);
-//   cy.get('@createEmployee.all').should('have.length', 0); // No POST request
-// });
+  cy.get('input[name="JoiningDate"]').clear().invoke('val', '2023-13-40').trigger('input');
+  cy.get('form').submit();
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+  cy.wait(500);
+  cy.get('@createEmployee.all').should('have.length', 0); // No POST request
+});
 
-// it('should prevent form submission when DepartmentId is invalid', () => {
-//   cy.visit('/Employee/Create');
-//   cy.get('input[name="EmployeeName"]').type('Manny Doe');
-//   cy.get('input[name="Designation"]').type('Valid Designation');
-//   cy.get('input[name="NID"]').type('123456');
-//   cy.get('input[name="JoiningDate"]').type('2023-12-31');
-//   cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
+it('should prevent form submission when DepartmentId is invalid', () => {
+  cy.visit('/Employee/Create');
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="NID"]').type('123456');
+  cy.get('input[name="JoiningDate"]').type('2023-12-31');
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true }); // Assuming 'A+' is valid
 
-//   cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
-//   cy.get('form').submit();
-//   cy.intercept('POST', '/Employee/Create').as('createEmployee');
-//   cy.wait(500);
-//   cy.get('@createEmployee.all').should('have.length', 0); // No POST request
-// });
+  cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
+  cy.get('form').submit();
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+  cy.wait(500);
+  cy.get('@createEmployee.all').should('have.length', 0); // No POST request
+});
 
-// it('should prevent form submission when BloodGroup is invalid', () => {
-//   cy.visit('/Employee/Create');
-//   cy.get('input[name="EmployeeName"]').type('Manny Doe');
-//   cy.get('input[name="Designation"]').type('Valid Designation');
-//   cy.get('input[name="NID"]').type('123456');
-//   cy.get('input[name="JoiningDate"]').type('2023-12-31');
-//   cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
+it('should prevent form submission when BloodGroup is invalid', () => {
+  cy.visit('/Employee/Create');
+  cy.get('input[name="EmployeeName"]').type('Manny Doe');
+  cy.get('input[name="Designation"]').type('Valid Designation');
+  cy.get('input[name="NID"]').type('123456');
+  cy.get('input[name="JoiningDate"]').type('2023-12-31');
+  cy.get('select[name="DepartmentId"]').select('1', { force: true }); // Assuming '1' is a valid option
 
-//   cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
-//   cy.get('form').submit();
-//   cy.intercept('POST', '/Employee/Create').as('createEmployee');
-//   cy.wait(500);
-//   cy.get('@createEmployee.all').should('have.length', 0); // No POST request
-// });
+  cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
+  cy.get('form').submit();
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+  cy.wait(500);
+  cy.get('@createEmployee.all').should('have.length', 0); // No POST request
+});
 
 
-// it('should prevent submission when all fields are invalid', () => {
-//   cy.visit('/Employee/Create');
+it('should prevent submission when all fields are invalid', () => {
+  cy.visit('/Employee/Create');
 
-//   // Intercept the GET request to fetch departments
-//   cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
+  // Intercept the GET request to fetch departments
+  cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
 
-//   // Wait for the departments data to load
-//   cy.wait('@getDepartments');
+  // Wait for the departments data to load
+  cy.wait('@getDepartments');
 
-//   // Ensure the department dropdown is populated
-//   cy.get('select[name="DepartmentId"]').find('option').should('have.length.greaterThan', 1);
+  // Ensure the department dropdown is populated
+  cy.get('select[name="DepartmentId"]').find('option').should('have.length.greaterThan', 1);
 
-//   // Fill out the form with invalid data
-//   cy.get('input[name="EmployeeName"]').clear(); // Leave name empty
-//   cy.get('input[name="Designation"]').clear().type('1234'); // Invalid designation (numeric)
-//   cy.get('input[name="NID"]').clear().type('abcde'); // Invalid NID (non-numeric)
-//   cy.get('input[name="JoiningDate"]').invoke('val', '2023-13-40').trigger('input');
+  // Fill out the form with invalid data
+  cy.get('input[name="EmployeeName"]').clear(); // Leave name empty
+  cy.get('input[name="Designation"]').clear().type('1234'); // Invalid designation (numeric)
+  cy.get('input[name="NID"]').clear().type('abcde'); // Invalid NID (non-numeric)
+  cy.get('input[name="JoiningDate"]').invoke('val', '2023-13-40').trigger('input');
 
-//   // Select invalid options for department and blood group
-//   cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
-//   cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
+  // Select invalid options for department and blood group
+  cy.get('select[name="DepartmentId"]').select('-Select-', { force: true });
+  cy.get('select[name="BloodGroup"]').select('-Select-', { force: true });
 
-//   // Try submitting the form
-//   cy.get('form').submit();
+  // Try submitting the form
+  cy.get('form').submit();
 
-//     // Assert validation styles on the wrapper element
-// cy.get('input[name="EmployeeName"]').closest('.form-group')
-// .should('have.css', 'border', '1px solid rgb(255, 0, 0)'); // Red border on form-group
+    // Assert validation styles on the wrapper element
+cy.get('input[name="EmployeeName"]').closest('.form-group')
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)'); // Red border on form-group
 
-// cy.get('input[name="Designation"]').closest('.form-group')
-// .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+cy.get('input[name="Designation"]').closest('.form-group')
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-// cy.get('input[name="NID"]').closest('.form-group')
-// .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+cy.get('input[name="NID"]').closest('.form-group')
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-// cy.get('input[name="JoiningDate"]').closest('.form-group')
-// .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+cy.get('input[name="JoiningDate"]').closest('.form-group')
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-// cy.get('select[name="DepartmentId"]').closest('.form-group')
-// .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+cy.get('select[name="DepartmentId"]').closest('.form-group')
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-// cy.get('select[name="BloodGroup"]').closest('.form-group')
-// .should('have.css', 'border', '1px solid rgb(255, 0, 0)');
+cy.get('select[name="BloodGroup"]').closest('.form-group')
+.should('have.css', 'border', '1px solid rgb(255, 0, 0)');
 
-//   // Assert that the form was not submitted (no POST request was made)
-//   cy.intercept('POST', '/Employee/Create').as('createEmployee');
-//   cy.wait(500); // Give time to ensure no POST request happens
-//   cy.get('@createEmployee.all').should('have.length', 0); // Assert no requests were made
-// });
+  // Assert that the form was not submitted (no POST request was made)
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+  cy.wait(500); // Give time to ensure no POST request happens
+  cy.get('@createEmployee.all').should('have.length', 0); // Assert no requests were made
+});
 
-//   });
+  });
 
  
+
+
+describe('Form submission Good case input tests', () => {
+
+  
+it('should allow submission when all fields are valid', () => {
+  cy.visit('/Employee/Create');
+
+  // Intercept the GET request to fetch departments
+  cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
+
+  // Wait for the departments data to load
+  cy.wait('@getDepartments');
+
+  // Ensure the department dropdown is populated
+  cy.get('select[name="DepartmentId"]').find('option').should('have.length.greaterThan', 1);
+
+  // Fill out the form with valid data
+  cy.get('input[name="EmployeeName"]').clear().type('Manny Doe'); // Valid name
+  cy.get('input[name="Designation"]').clear().type('Manager'); // Valid designation
+  cy.get('input[name="NID"]').clear().type('123456789'); // Valid NID
+  cy.get('input[name="JoiningDate"]').clear().type('2023-01-01'); // Valid joining date
+
+  // Select valid options for department and blood group
+  cy.get('select[name="DepartmentId"]').select('Information Technology', { force: true });
+  cy.get('select[name="BloodGroup"]').select('A+', { force: true });
+
+  cy.get('form').submit();
+
+  cy.intercept('POST', '/Employee/Create').as('createEmployee');
+
+
+  cy.wait(200); // Give time to ensure no POST request happens
+  cy.get('@createEmployee.all').should('have.length', 0); // Assert no requests were made // Example success message
+});
+
+
+});
 
 
 
@@ -284,7 +323,8 @@ describe('Create Employee Form', () => {
 
   //   it('should allow submission when all fields are valid', () => {
   //     cy.visit('/Employee/Create');
-    
+
+
   //     // Intercept the GET request to fetch departments (adjust the URL based on your application)
   //     cy.intercept('GET', '/Employee/GetDepartments').as('getDepartments');
     
@@ -336,6 +376,7 @@ describe('Create Employee Form', () => {
   //       // Trigger the submit action (simulate form submission)
   //       form.submit(); // This will trigger the backend call and redirection
   //     });
+      
   //   });
 
 

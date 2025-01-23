@@ -35,6 +35,8 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
     "nyc": "^17.1.0",
     "playwright": "^1.49.1",
     "typescript": "^5.7.2"
@@ -54,16 +56,6 @@
       "text",
       "html",
       "json"
-    ],
-    "instrument": true,
-    "sourceMap": false,
-    "compact": false,
-    "include": [
-      "instrumented/Scripts/*.js"
-    ],
-    "exclude": [
-      "node_modules",
-      "cypress/**/*"
     ]
   },
   "dependencies": {

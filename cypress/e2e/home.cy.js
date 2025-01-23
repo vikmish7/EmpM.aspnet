@@ -6,7 +6,5 @@ describe('ASP.NET Home Page Test', () => {
     // Check for a specific element from the .cshtml file
   });
 
-  after(() => {
-    cy.task('coverageReport'); // Ensure it's not happening in the "after all" hook that might be causing issues
-  });
+
 });
