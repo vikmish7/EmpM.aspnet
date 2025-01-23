@@ -1,4 +1,6 @@
-const { codeCoverageTask } = require('@cypress/code-coverage/task');
+// const { codeCoverageTask } = require('@cypress/code-coverage/task');
+const codeCoverageTask  = require('@cypress/code-coverage/task');
+
 const fs = require('fs');
 const path = require('path');
 const coverage = require('istanbul-lib-coverage'); // Coverage lib to generate reports

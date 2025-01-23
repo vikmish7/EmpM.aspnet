@@ -49,7 +49,23 @@
       "headless": false
     }
   },
-
+  "nyc": {
+    "reporter": [
+      "text",
+      "html",
+      "json"
+    ],
+    "instrument": true,
+    "sourceMap": false,
+    "compact": false,
+    "include": [
+      "instrumented/Scripts/*.js"
+    ],
+    "exclude": [
+      "node_modules",
+      "cypress/**/*"
+    ]
+  },
   "dependencies": {
     "@progress/kendo-ui": "^2024.4.1112",
     "jest-environment-jsdom-fourteen": "^1.0.1",

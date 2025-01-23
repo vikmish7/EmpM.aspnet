@@ -1,5 +1,5 @@
 const { defineConfig } = require('cypress');
-const { codeCoverageTask } = require('@cypress/code-coverage/task'); // Add this import
+const codeCoverageTask = require('@cypress/code-coverage/task');
 
 module.exports = defineConfig({
   e2e: {
@@ -9,7 +9,13 @@ module.exports = defineConfig({
       // Register the code coverage task
       codeCoverageTask(on, config);
 
+      // Optionally, you can add more custom tasks or plugins here
+
       return config; // Return config to ensure proper setup
+    },
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
     },
   },
 });
