@@ -190,3 +190,6 @@ $(document).ready(function () {
 
 // npx istanbul instrument Scripts/Employee.js --output instrumented/Employee.js
 // npx cypress run --headless --browser chrome --reporter mochawesome --reporter-options reportDir=cypress/reports
+// npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,reportFilename="[name]-report",overwrite=false
+// npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json
+// npx mochawesome-report-generator cypress/reports/merged-report.json --reportDir=cypress/reports --reportFilename=final-report
