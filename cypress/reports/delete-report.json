@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-23T10:23:12.262Z",
-    "end": "2025-01-23T10:23:13.365Z",
-    "duration": 1103,
+    "start": "2025-01-29T08:39:18.105Z",
+    "end": "2025-01-29T08:39:18.983Z",
+    "duration": 878,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "c1d4a4e3-88bc-4e38-b427-914a9eb4fe36",
+      "uuid": "9c6ffd2d-4944-43b7-a9d1-6c7a00f86895",
       "title": "",
       "fullFile": "cypress\\e2e\\delete.cy.js",
       "file": "cypress\\e2e\\delete.cy.js",
@@ -29,7 +29,7 @@
           "title": "should successfully delete an employee and update the employee list",
           "fullTitle": "should successfully delete an employee and update the employee list",
           "timedOut": null,
-          "duration": 936,
+          "duration": 773,
           "state": "passed",
           "speed": "fast",
           "pass": true,
@@ -38,20 +38,20 @@
           "context": null,
           "code": "cy.visit('/Employee'); // Visit the employee listing page\n// // Step 1: Capture the initial number of employees (rows in the table)\n// cy.get('#employeeTable tbody tr').then(($rows) => {\n//   const initialCount = $rows.length; // Capture the initial row count\n//   cy.log(`Initial employee count: ${initialCount}`); // Log initial count for verification\n//   // Step 2: Click the delete button of the first employee\n//   cy.get('#employeeTable tbody tr').first().find('.delete-btn').click(); // Click the delete button\n//   // Wait for the page to reload or for the table to update after deletion\n//   cy.url().should('include', '/Employee'); // Ensure we are on the employee listing page after the action\n//   // Step 3: Capture the updated number of rows and check if it is reduced by 1\n//   cy.get('#employeeTable tbody tr').then(($updatedRows) => {\n//     const updatedCount = $updatedRows.length; // Capture the updated row count\n//     cy.log(`Updated employee count: ${updatedCount}`); // Log updated count for verification\n//     // Verify that the row count has decreased by 1\n//     expect(updatedCount).to.eq(initialCount - 1); // Assert that the row count has decreased by 1\n//   });\n// });",
           "err": {},
-          "uuid": "78ac8411-f3bd-4c68-9219-b0bed108c9da",
-          "parentUUID": "c1d4a4e3-88bc-4e38-b427-914a9eb4fe36",
+          "uuid": "6596684a-7877-4993-8f90-aa624777b402",
+          "parentUUID": "9c6ffd2d-4944-43b7-a9d1-6c7a00f86895",
           "isHook": false,
           "skipped": false
         }
       ],
       "suites": [],
       "passes": [
-        "78ac8411-f3bd-4c68-9219-b0bed108c9da"
+        "6596684a-7877-4993-8f90-aa624777b402"
       ],
       "failures": [],
       "pending": [],
       "skipped": [],
-      "duration": 936,
+      "duration": 773,
       "root": true,
       "rootEmpty": false,
       "_timeout": 2000

@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-23T10:23:15.528Z",
-    "end": "2025-01-23T10:23:15.834Z",
-    "duration": 306,
+    "start": "2025-01-29T08:39:20.781Z",
+    "end": "2025-01-29T08:39:21.048Z",
+    "duration": 267,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "1b786743-b8d6-417d-b8ed-2ad50a7eaf96",
+      "uuid": "ec90fc2c-79da-4688-8b29-740a9c0fe936",
       "title": "",
       "fullFile": "cypress\\e2e\\home.cy.js",
       "file": "cypress\\e2e\\home.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "60e57a4e-1fba-4bd9-926b-1fe4038dfbdc",
+          "uuid": "3b778cbf-8bdd-4102-a29b-d61a3b2745c4",
           "title": "ASP.NET Home Page Test",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should load the home page and verify the title",
               "fullTitle": "ASP.NET Home Page Test should load the home page and verify the title",
               "timedOut": null,
-              "duration": 206,
+              "duration": 181,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "// Visit the home page\ncy.visit('/'); // Base URL is prepended automatically\n// Check for a specific element from the .cshtml file",
               "err": {},
-              "uuid": "4929b8a6-bb56-4526-b098-eb27a7d5d07d",
-              "parentUUID": "60e57a4e-1fba-4bd9-926b-1fe4038dfbdc",
+              "uuid": "1dbfbd47-de97-48a9-8cc1-352b91ec579f",
+              "parentUUID": "3b778cbf-8bdd-4102-a29b-d61a3b2745c4",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "4929b8a6-bb56-4526-b098-eb27a7d5d07d"
+            "1dbfbd47-de97-48a9-8cc1-352b91ec579f"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 206,
+          "duration": 181,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
