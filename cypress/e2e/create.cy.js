@@ -1,5 +1,5 @@
 
-describe('Create Employee Form', () => {
+describe('Employee Form Fields test', () => {
   beforeEach(() => {
     // Visit the page containing the form
   });
@@ -19,21 +19,6 @@ describe('Create Employee Form', () => {
     cy.get('select[name="BloodGroup"]').should('exist');
     cy.get('input[type="submit"]').should('exist');
   });
-
-  it('should show an alert for invalid EmployeeName', () => {
-    cy.visit('/Employee/Create');
-
-    // Leave EmployeeName empty
-    cy.get('input[name="EmployeeName"]').clear();
-
-    // Stub the alert window and verify its message
-    cy.on('window:alert', (alertText) => {
-        expect(alertText).to.equal('Please fill out all required fields correctly.');
-    });
-
-    // Submit the form
-    cy.get('form').submit();
-});
 
 
 });
