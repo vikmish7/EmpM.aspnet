@@ -13,17 +13,14 @@ module.exports = defineConfig({
 
       return config; // Return config to ensure proper setup
     },
-    // reporter: 'mochawesome',
-    // reporterOptions: {
-    //   reportDir: 'cypress/reports',
-    // },
+
     reporter: "mochawesome",
-reporterOptions: {
-  reportDir: "cypress/reports",
-  reportFilename: "[name]-report",  // Use suite name for unique reports
-  overwrite: false, // Do not overwrite existing files
-  html: true,
-  json: true
-}
+    reporterOptions: {
+      reportDir: "cypress/reports",
+      reportFilename: "[name]-report",  // Use suite name for unique reports
+      overwrite: false, // Do not overwrite existing files
+      html: true,
+      json: true
+    }
   },
 });
