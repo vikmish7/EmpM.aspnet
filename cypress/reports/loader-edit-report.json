@@ -5,9 +5,9 @@
     "passes": 4,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-31T09:31:38.757Z",
-    "end": "2025-01-31T09:31:48.614Z",
-    "duration": 9857,
+    "start": "2025-01-31T14:58:10.964Z",
+    "end": "2025-01-31T14:58:21.249Z",
+    "duration": 10285,
     "testsRegistered": 4,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "4be326ed-6bd4-469b-814f-ff16b238e012",
+      "uuid": "acb82bad-5df2-4368-bba6-0909a1e12115",
       "title": "",
       "fullFile": "cypress\\e2e\\loader-edit.cy.js",
       "file": "cypress\\e2e\\loader-edit.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "bd676653-581a-4a3f-82dc-4ef02faaaace",
+          "uuid": "6d58ff44-0f66-4965-a62d-60947fb1e5da",
           "title": "Employee Table Loader",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should display loader and then show the table",
               "fullTitle": "Employee Table Loader should display loader and then show the table",
               "timedOut": null,
-              "duration": 2252,
+              "duration": 2367,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,26 +47,26 @@
               "context": null,
               "code": "cy.visit('/Employee'); // Adjust the route as per your app\n// Loader should be visible initially\ncy.get('#loader').should('be.visible');\n// Loader should disappear and table should be visible after 1.5 seconds\n// cy.wait(1800); // Adjust the wait time to match your loader timeout\n// cy.get('#loader', { timeout: 6000 }).should('have.css', 'display', 'none');\ncy.get('#loader', {\n  timeout: 6000\n}).should('not.be.visible') // Checks visibility\n.and('have.css', 'display', 'none'); // Checks display property\n// cy.get('#loader').should('not.exist');\ncy.get('#employeeTable').should('be.visible');",
               "err": {},
-              "uuid": "bbcca5e0-269b-4bb6-aeea-a89471e1376e",
-              "parentUUID": "bd676653-581a-4a3f-82dc-4ef02faaaace",
+              "uuid": "62507bcc-434f-430c-b96e-6ea079ae53d1",
+              "parentUUID": "6d58ff44-0f66-4965-a62d-60947fb1e5da",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "bbcca5e0-269b-4bb6-aeea-a89471e1376e"
+            "62507bcc-434f-430c-b96e-6ea079ae53d1"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2252,
+          "duration": 2367,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "f80edb1b-6364-48e4-aeac-6f182d92ea03",
+          "uuid": "a6bb56f6-4289-4518-8642-63bc094a2935",
           "title": "Edit Button Functionality",
           "fullFile": "",
           "file": "",
@@ -77,7 +77,7 @@
               "title": "should toggle view and edit modes when Edit is clicked",
               "fullTitle": "Edit Button Functionality should toggle view and edit modes when Edit is clicked",
               "timedOut": null,
-              "duration": 1967,
+              "duration": 2019,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -86,26 +86,26 @@
               "context": null,
               "code": "cy.visit('/Employee');\n// Click the Edit button on the first row\ncy.get('#employeeTable tbody tr').first().within(() => {\n  cy.get('.edit-btn').click();\n  // Verify view-mode is hidden and edit-mode is visible\n  cy.get('.view-mode').should('not.be.visible');\n  cy.get('.edit-mode').should('be.visible');\n  // Verify Save button is visible\n  cy.get('.save-btn').should('be.visible');\n});",
               "err": {},
-              "uuid": "2f882fd7-a4ac-4a7c-bc35-b86be5f2c363",
-              "parentUUID": "f80edb1b-6364-48e4-aeac-6f182d92ea03",
+              "uuid": "c7772260-d26f-4519-bcff-043d3cbe560b",
+              "parentUUID": "a6bb56f6-4289-4518-8642-63bc094a2935",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2f882fd7-a4ac-4a7c-bc35-b86be5f2c363"
+            "c7772260-d26f-4519-bcff-043d3cbe560b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1967,
+          "duration": 2019,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "1098a72d-8228-48fd-8192-08d812302e8c",
+          "uuid": "6fddd2b3-f58c-4243-89fa-1a983029a01a",
           "title": "Save Employee Data",
           "fullFile": "",
           "file": "",
@@ -116,7 +116,7 @@
               "title": "should simulate employee details update without making an actual API call",
               "fullTitle": "Save Employee Data should simulate employee details update without making an actual API call",
               "timedOut": null,
-              "duration": 2989,
+              "duration": 3240,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -125,26 +125,26 @@
               "context": null,
               "code": "cy.visit('/Employee'); // Replace with your app's route\n// Interact with the form to edit employee details\ncy.get('.edit-btn').first().click();\n// Use the 'input' selectors by the 'class' or 'type' to interact with the fields\ncy.get('input.edit-mode').eq(0).clear().type('Updated Name'); // Employee Name\ncy.get('input.edit-mode').eq(1).clear().type('Updated Designation'); // Designation\n// Set up intercept for the POST request to mock the response\ncy.intercept('POST', '/Employee/Edit', {\n  statusCode: 200,\n  // Simulate a successful response\n  body: {\n    status: 'success',\n    message: 'Employee updated successfully'\n  }\n}).as('editEmployee');\n// Click the save button to simulate saving the changes\ncy.get('.save-btn').first().click();\n// Wait for the mocked API call\ncy.wait('@editEmployee').then(({\n  request,\n  response\n}) => {\n  console.log('Actual request body:', request.body);\n  // Assert that the request payload contains the correct values\n  // expect(request.body).to.have.property('EmployeeName', 'Updated Name');\n  // expect(request.body).to.have.property('Designation', 'Updated Designation');\n  expect(request.body).to.include({\n    EmployeeName: 'Updated Name',\n    Designation: 'Updated Designation'\n  });\n  // Assert that the mocked response is successful\n  expect(response.body.status).to.eq('success');\n  cy.get('.view-mode').eq(0).invoke('text', 'Updated Name');\n  cy.get('.view-mode').eq(1).invoke('text', 'Updated Designation');\n});\ncy.get('.view-mode').eq(0).should('contain', 'Updated Name'); // Check updated name\ncy.get('.view-mode').eq(1).should('contain', 'Updated Designation'); // Check",
               "err": {},
-              "uuid": "5eac6486-79d0-4740-915b-6b42f1c4144d",
-              "parentUUID": "1098a72d-8228-48fd-8192-08d812302e8c",
+              "uuid": "be91285e-e3a3-4bcf-86ee-ce9e5670eba1",
+              "parentUUID": "6fddd2b3-f58c-4243-89fa-1a983029a01a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5eac6486-79d0-4740-915b-6b42f1c4144d"
+            "be91285e-e3a3-4bcf-86ee-ce9e5670eba1"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2989,
+          "duration": 3240,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "ad766652-bd19-4563-82b1-c94ef7eaeff5",
+          "uuid": "43435dc2-9035-49f5-8271-766404aa01f9",
           "title": "Save Button Error Handling",
           "fullFile": "",
           "file": "",
@@ -155,7 +155,7 @@
               "title": "should display an error message on failed save",
               "fullTitle": "Save Button Error Handling should display an error message on failed save",
               "timedOut": null,
-              "duration": 2350,
+              "duration": 2319,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -164,20 +164,20 @@
               "context": null,
               "code": "cy.visit('/Employee');\n// Wait for the table to load\n// Intercept the AJAX call to simulate a failure\ncy.intercept('POST', '/Employee/Edit', {\n  statusCode: 500\n}).as('saveEmployee');\n// Click the Edit button\ncy.get('#employeeTable tbody tr').first().within(() => {\n  cy.get('.edit-btn').click();\n  // Update the employee name\n  cy.get('input').first().clear().type('Updated Name');\n});\n// Click the Save button after setting up the intercept\ncy.get('#employeeTable tbody tr').first().within(() => {\n  cy.get('.save-btn').click();\n});\n// Verify that the AJAX request was made\ncy.wait('@saveEmployee');\n// Verify error alert is shown\ncy.on('window:alert', str => {\n  expect(str).to.equal('Error updating employee details.');\n});",
               "err": {},
-              "uuid": "a2f32ae4-1d15-4a5e-9849-94dc1407d200",
-              "parentUUID": "ad766652-bd19-4563-82b1-c94ef7eaeff5",
+              "uuid": "f057ca73-dcce-4f65-8796-bc7525534577",
+              "parentUUID": "43435dc2-9035-49f5-8271-766404aa01f9",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a2f32ae4-1d15-4a5e-9849-94dc1407d200"
+            "f057ca73-dcce-4f65-8796-bc7525534577"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2350,
+          "duration": 2319,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
