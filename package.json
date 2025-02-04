@@ -39,6 +39,7 @@
     "mochawesome-report-generator": "^6.2.0",
     "nyc": "^17.1.0",
     "playwright": "^1.49.1",
+    "ts-loader": "^9.5.2",
     "typescript": "^5.7.2"
   },
   "jest": {

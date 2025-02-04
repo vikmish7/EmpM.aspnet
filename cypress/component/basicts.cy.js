@@ -1,6 +1,6 @@
 // cypress/component/sum.spec.js
 
-import sum from '../../Scripts/basic.js'; // Adjust path based on your setup
+import sum from '../../Scripts/compiled/basic'; // Adjust path based on your setup
 
 describe('Sum Function', () => {
   it('should return 5 when adding 2 and 3', () => {
