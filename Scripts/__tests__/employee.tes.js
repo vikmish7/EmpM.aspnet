@@ -1,14 +1,14 @@
-﻿// /**
-//  * @jest-environment jsdom
-//  */
+﻿/**
+ * @jest-environment jsdom
+ */
 
-// //jest.mock('jquery', () => {
-// //    const actualJQuery = jest.requireActual('jquery'); // Keep the original jQuery functionality
-// //    return {
-// //        ...actualJQuery,
-// //        ajax: jest.fn(), // Mock the AJAX method
-// //    };
-// //});
+//jest.mock('jquery', () => {
+//    const actualJQuery = jest.requireActual('jquery'); // Keep the original jQuery functionality
+//    return {
+//        ...actualJQuery,
+//        ajax: jest.fn(), // Mock the AJAX method
+//    };
+//});
 
 // //const $ = require("jquery");
 // //global.$ = require('jquery'); // Make sure jQuery is globally available
