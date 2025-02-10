@@ -30,35 +30,22 @@ jobs:
       # - name: Build the project
       #   run: dotnet build --configuration Release
 
-      # Step 5: Start the ASP.NET app in the background
-      - name: Start ASP.NET app
-        run: |
-          start-sleep 10 # Wait for the app to initialize (adjust sleep time as needed)
-          dotnet run --configuration Release & # Start the app in the background
           
-      # Step 6: Set up Node.js for Cypress
+      # Step 5: Set up Node.js for Cypress
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
 
-      # Step 7: Install Node.js dependencies
+      # Step 6: Install Node.js dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 8: Wait for the app to be fully available
-      - name: Wait for the app to be ready
-        run: |
-          while ! curl --silent --fail http://localhost:5000; do
-            echo "Waiting for app to be available..."
-            sleep 5
-          done
-
-      # Step 9: Run Cypress tests in headless mode
+      # Step 7: Run Cypress tests in headless mode
       - name: Run Cypress tests
-        run: npx cypress run --headless --browser chrome
+        run: npx cypress run --headless --component
 
-      # Step 10: Check if tests passed and proceed
+      # Step 8: Check if tests passed and proceed
       - name: Check if tests passed
         if: success()
         run: echo "Cypress tests passed. Proceeding with merge."
