@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-10T05:59:38.965Z",
+    "end": "2025-02-10T05:59:39.916Z",
+    "duration": 951,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d32a0150-c515-4167-a154-228b7b810293",
+      "title": "",
+      "fullFile": "cypress\\component\\basic-jquery.cy.js",
+      "file": "cypress\\component\\basic-jquery.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "79b2aecd-40af-421e-8261-07c4a32692f5",
+          "title": "Basic jQuery Unit Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should change text on button click",
+              "fullTitle": "Basic jQuery Unit Test should change text on button click",
+              "timedOut": null,
+              "duration": 730,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\"#displayText\").should(\"have.text\", \"Original Text\");\ncy.get(\"#changeTextBtn\").click();\ncy.get(\"#displayText\").should(\"have.text\", \"Text changed!\");",
+              "err": {},
+              "uuid": "834c630f-f15d-4d2b-ba05-4a64bf65d0b1",
+              "parentUUID": "79b2aecd-40af-421e-8261-07c4a32692f5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "834c630f-f15d-4d2b-ba05-4a64bf65d0b1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 730,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name]-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/CompReports",
+        "reportFilename": "[name]-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

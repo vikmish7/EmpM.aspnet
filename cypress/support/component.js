@@ -22,4 +22,6 @@
 
 // // Example use:
 // // cy.mount(<MyComponent />)
+import '@cypress/code-coverage/support';
+
 import 'cypress-mochawesome-reporter/register';

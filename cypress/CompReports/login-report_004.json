@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-10T06:05:20.419Z",
+    "end": "2025-02-10T06:05:21.413Z",
+    "duration": 994,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b642026c-a7c6-47f3-87fb-8c5d4f3179d8",
+      "title": "",
+      "fullFile": "cypress\\component\\login.cy.js",
+      "file": "cypress\\component\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a5604387-9102-4c35-b4d9-8b14c5ad1245",
+          "title": "Login Form Validation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should show error when username is empty",
+              "fullTitle": "Login Form Validation Should show error when username is empty",
+              "timedOut": null,
+              "duration": 175,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_k98kc4t33().f[4]++;\ncov_k98kc4t33().s[19]++;\ncy.get('button[type=\"submit\"]').click();\ncov_k98kc4t33().s[20]++;\ncy.get('#usernameError').should('be.visible');",
+              "err": {},
+              "uuid": "399fcaa9-16df-47c9-99b9-9692582a91aa",
+              "parentUUID": "a5604387-9102-4c35-b4d9-8b14c5ad1245",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should show error when password is empty",
+              "fullTitle": "Login Form Validation Should show error when password is empty",
+              "timedOut": null,
+              "duration": 106,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_k98kc4t33().f[5]++;\ncov_k98kc4t33().s[22]++;\ncy.get('button[type=\"submit\"]').click();\ncov_k98kc4t33().s[23]++;\ncy.get('#passwordError').should('be.visible');",
+              "err": {},
+              "uuid": "c530bb6c-a07e-4182-a81f-ce029a9cb13d",
+              "parentUUID": "a5604387-9102-4c35-b4d9-8b14c5ad1245",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should show success message when both fields are filled",
+              "fullTitle": "Login Form Validation Should show success message when both fields are filled",
+              "timedOut": null,
+              "duration": 596,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_k98kc4t33().f[6]++;\ncov_k98kc4t33().s[25]++;\ncy.get('#username').type('testUser');\ncov_k98kc4t33().s[26]++;\ncy.get('#password').type('testPass');\ncov_k98kc4t33().s[27]++;\ncy.get('button[type=\"submit\"]').click();\ncov_k98kc4t33().s[28]++;\ncy.get('#message').should('have.text', 'Login successful!').and('have.css', 'color', 'rgb(0, 128, 0)');",
+              "err": {},
+              "uuid": "68b7e146-5689-4d89-aa26-3d536496b473",
+              "parentUUID": "a5604387-9102-4c35-b4d9-8b14c5ad1245",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "399fcaa9-16df-47c9-99b9-9692582a91aa",
+            "c530bb6c-a07e-4182-a81f-ce029a9cb13d",
+            "68b7e146-5689-4d89-aa26-3d536496b473"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 877,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name]-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/CompReports",
+        "reportFilename": "[name]-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

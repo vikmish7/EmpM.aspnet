@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const codeCoverageTask = require("@cypress/code-coverage/task");
+const mochawesomeReporter = require("cypress-mochawesome-reporter/plugin");
 
 module.exports = defineConfig({
   e2e: {
@@ -35,6 +36,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // Register the code coverage task for component testing
       codeCoverageTask(on, config);
+      mochawesomeReporter(on);
 
       // Register mochawesome reporter for component testing
 
