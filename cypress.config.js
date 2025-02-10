@@ -36,7 +36,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // Register the code coverage task for component testing
       codeCoverageTask(on, config);
-      mochawesomeReporter(on);
+      // mochawesomeReporter(on);
 
       // Register mochawesome reporter for component testing
 

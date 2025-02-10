@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-10T06:17:28.882Z",
+    "end": "2025-02-10T06:17:28.994Z",
+    "duration": 112,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "767cd7bf-fc69-4a7d-a352-dddd60a901ee",
+      "title": "",
+      "fullFile": "cypress\\component\\basicts.cy.js",
+      "file": "cypress\\component\\basicts.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f6506974-bc11-4ce0-9baa-5edf5190da8b",
+          "title": "Sum Function",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return 5 when adding 2 and 3",
+              "fullTitle": "Sum Function should return 5 when adding 2 and 3",
+              "timedOut": null,
+              "duration": 24,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_2fxuzkoxbu().f[1]++;\nvar result = (cov_2fxuzkoxbu().s[2]++, _Scripts_compiled_basic__WEBPACK_IMPORTED_MODULE_0___default()(2, 3));\ncov_2fxuzkoxbu().s[3]++;\nexpect(result).to.equal(5);",
+              "err": {},
+              "uuid": "059a53f9-12f0-4667-9e01-8a78584c5055",
+              "parentUUID": "f6506974-bc11-4ce0-9baa-5edf5190da8b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return -1 when adding -3 and 2",
+              "fullTitle": "Sum Function should return -1 when adding -3 and 2",
+              "timedOut": null,
+              "duration": 10,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_2fxuzkoxbu().f[2]++;\nvar result = (cov_2fxuzkoxbu().s[5]++, _Scripts_compiled_basic__WEBPACK_IMPORTED_MODULE_0___default()(-3, 2));\ncov_2fxuzkoxbu().s[6]++;\nexpect(result).to.equal(-1);",
+              "err": {},
+              "uuid": "e1410ad5-d44c-4526-92ec-c4bfb9bea690",
+              "parentUUID": "f6506974-bc11-4ce0-9baa-5edf5190da8b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 0 when adding 0 and 0",
+              "fullTitle": "Sum Function should return 0 when adding 0 and 0",
+              "timedOut": null,
+              "duration": 10,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_2fxuzkoxbu().f[3]++;\nvar result = (cov_2fxuzkoxbu().s[8]++, _Scripts_compiled_basic__WEBPACK_IMPORTED_MODULE_0___default()(0, 0));\ncov_2fxuzkoxbu().s[9]++;\nexpect(result).to.equal(0);",
+              "err": {},
+              "uuid": "6dca2a22-24da-43ca-9e5e-6d83d0f34c1f",
+              "parentUUID": "f6506974-bc11-4ce0-9baa-5edf5190da8b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "059a53f9-12f0-4667-9e01-8a78584c5055",
+            "e1410ad5-d44c-4526-92ec-c4bfb9bea690",
+            "6dca2a22-24da-43ca-9e5e-6d83d0f34c1f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 44,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name]-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/CompReports/json",
+        "reportFilename": "[name]-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

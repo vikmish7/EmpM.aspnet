@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-10T06:16:39.271Z",
+    "end": "2025-02-10T06:16:39.432Z",
+    "duration": 161,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c39918dd-9aa5-41c8-aa3d-2cd13b46f7bb",
+      "title": "",
+      "fullFile": "cypress\\component\\edit-page.cy.js",
+      "file": "cypress\\component\\edit-page.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "41cdfdeb-ee5b-4eeb-a2de-4486569d9e9e",
+          "title": "Employee List Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load emp.js script",
+              "fullTitle": "Employee List Page should load emp.js script",
+              "timedOut": null,
+              "duration": 101,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cov_1y5uyrfud9().f[7]++;\ncov_1y5uyrfud9().s[14]++;\ncy.window().then(function (win) {\n  cov_1y5uyrfud9().f[8]++;\n  cov_1y5uyrfud9().s[15]++;\n  console.log(win.document.scripts); // Inspect the loaded scripts\n});",
+              "err": {},
+              "uuid": "aad98d83-5dd3-4808-8671-07f1ff3bfc1c",
+              "parentUUID": "41cdfdeb-ee5b-4eeb-a2de-4486569d9e9e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "aad98d83-5dd3-4808-8671-07f1ff3bfc1c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 101,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name]-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/CompReports/json",
+        "reportFilename": "[name]-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
