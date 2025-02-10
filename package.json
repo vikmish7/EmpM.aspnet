@@ -15,10 +15,12 @@
     "@babel/preset-env": "^7.26.0",
     "@cypress/code-coverage": "^3.13.10",
     "@playwright/test": "^1.49.1",
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/jquery": "^3.5.32",
     "babel-jest": "^29.7.0",
     "babel-plugin-istanbul": "^7.0.0",
     "cypress": "^13.17.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "istanbul-lib-coverage": "^3.2.2",
     "istanbul-lib-instrument": "^6.0.3",
     "jasmine": "^5.5.0",
@@ -43,36 +45,35 @@
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.2"
   },
- "jest": {
-  "testEnvironment": "jsdom",  
-  "testTimeout": 30000,  
-  "testMatch": [
-    "**/__tests__/*.test.js"  
-  ],
-  "collectCoverage": true,  
-  "collectCoverageFrom": [
-    "Scripts/basic.js", 
-    "Scripts/__tests__/*.test.js"  
-  ],
-  "coverageReporters": [
-    "text",  
-    "html",  
-    "lcov"  
-  ],
-  "reporters": [
-    "default",
-    [
-      "jest-html-reporter",  
-      {
-        "pageTitle": "Test Report",
-        "outputPath": "test-report.html",
-        "includeFailureMsg": true,
-        "includeConsoleLog": true
-      }
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testTimeout": 30000,
+    "testMatch": [
+      "**/__tests__/*.test.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "Scripts/basic.js",
+      "Scripts/__tests__/*.test.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "html",
+      "lcov"
+    ],
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporter",
+        {
+          "pageTitle": "Test Report",
+          "outputPath": "test-report.html",
+          "includeFailureMsg": true,
+          "includeConsoleLog": true
+        }
+      ]
     ]
-  ]
-}
-,
+  },
   "nyc": {
     "reporter": [
       "text",
