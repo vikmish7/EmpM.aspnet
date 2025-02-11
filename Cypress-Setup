@@ -1,0 +1,48 @@
+Cypress install:(proxy issue solve)
+ 
+ 
+ 
+1. download zip and extract somewhere in download folder
+2. open powershell and set the install binary:
+ $env:CYPRESS_INSTALL_BINARY="C:\Users\vikas.mishra\Downloads\cypress\Cypress"
+ 
+3. install cypress through :
+ npm install cypress --save-dev --ignore-scripts
+ 
+4. after installation setup the path from where it will run: (whenever running)
+ $env:CYPRESS_RUN_BINARY="C:\Users\vikas.mishra\Downloads\cypress\Cypress\Cypress.exe"
+ 
+5. run cypress
+npx cypress open
+ 
+ 
+--------------------------------------
+ 
+1. install cypress
+2. npm install
+ 
+  react
+    react-dom
+    typescript
+    webpack
+  cypress-mochawesome-reporter
+  @cypress/code-coverage
+  mochawesome
+  istanbul-lib-coverage
+  nyc
+  istanbul-lib-instrument
+  babel-plugin-istanbul
+  @babel/preset-env
+  @babel/core
+ 
+ 
+ 
+ 
+3. create webpack.config.js
+4. update cypress.config.js
+ 
+5. add support component.js in cypress
+6. update plugin/index.js
+ 
+7. ADD nyc data in package.json
+8. setup .babelrc
