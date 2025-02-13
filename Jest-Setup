@@ -1,0 +1,106 @@
+1. Install Jest and Required Packages
+Navigate to your new project's root folder and run:
+
+sh
+Copy
+Edit
+npm init -y   # Initialize package.json if not already done
+npm install --save-dev jest jquery jest-environment-jsdom
+If you're using Playwright for browser testing:
+
+sh
+Copy
+Edit
+npm install --save-dev jest-playwright-preset
+2. Configure Jest in package.json
+Modify package.json to include the Jest configuration:
+
+json
+Copy
+Edit
+"jest": {
+  "testEnvironment": "jsdom",
+  "testTimeout": 30000,
+  "testMatch": ["**/__tests__/*.test.js"],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "Scripts/**/*.js",
+    "!Scripts/__tests__/*.test.js"
+  ],
+  "coverageReporters": ["text", "html", "lcov"],
+  "reporters": [
+    "default",
+    [
+      "jest-html-reporter",
+      {
+        "pageTitle": "Test Report",
+        "outputPath": "test-report.html",
+        "includeFailureMsg": true,
+        "includeConsoleLog": true
+      }
+    ]
+  ]
+}
+If using Playwright:
+Change "testEnvironment": "jsdom" to "jest-playwright-preset".
+
+3. Create Jest Setup File (Optional)
+If needed, create jest.setup.js:
+
+js
+Copy
+Edit
+// Jest setup file (optional)
+global.$ = require("jquery");
+Then update package.json:
+
+json
+Copy
+Edit
+"jest": {
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"]
+}
+4. Create the __tests__ Folder
+Inside your Scripts folder, create __tests__ and add test files like example.test.js.
+
+Example test file:
+
+js
+Copy
+Edit
+const $ = require('jquery');
+
+describe("Basic Jest Test", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <button id="btn">Click Me</button>
+      <p id="text">Hello</p>
+    `;
+  });
+
+  it("should change text on button click", () => {
+    $("#btn").click(() => $("#text").text("Changed"));
+    $("#btn").trigger("click");
+    expect($("#text").text()).toBe("Changed");
+  });
+});
+5. Run Jest Tests
+Run tests with:
+
+sh
+Copy
+Edit
+npx jest
+Or with coverage:
+
+sh
+Copy
+Edit
+npx jest --coverage
+To run in parallel with max workers:
+
+sh
+Copy
+Edit
+npx jest --maxWorkers=4
+This should get Jest and code coverage working in your new project!

@@ -54,7 +54,7 @@
     "collectCoverage": true,
 "collectCoverageFrom": [
   "Scripts/basic.js",
-  "Scripts/basjquery.js",
+  "Scripts/crud/*.js",
   "!Scripts/__tests__/*.test.js"
 ],
     "coverageReporters": [

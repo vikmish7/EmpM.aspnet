@@ -1,0 +1,100 @@
+🔹 1. API Mocking (HTTP Requests)
+If your JavaScript code makes API calls (e.g., using fetch() or $.ajax()), you can mock responses to test different cases.
+
+Use Jest Mocks: jest.fn() or jest.spyOn()
+Mock Fetch API: global.fetch = jest.fn(() => Promise.resolve(...))
+Mock jQuery AJAX: $.ajax = jest.fn(() => Promise.resolve(...))
+👉 Example:
+
+javascript
+Copy
+Edit
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({ message: "Success" }),
+  })
+);
+🔹 2. Event Handling & DOM Manipulation
+Simulate Clicks, Inputs, Hover, etc.
+Check if elements update after interactions
+Verify classes, attributes, styles
+👉 Example:
+
+javascript
+Copy
+Edit
+test("should add a class when clicked", () => {
+  $("#button").trigger("click");
+  expect($("#button")).toHaveClass("active");
+});
+🔹 3. Timers & Delays (Async Testing)
+If your code has setTimeout(), setInterval(), or delays, you need Jest's fake timers to speed up tests.
+
+👉 Example:
+
+javascript
+Copy
+Edit
+jest.useFakeTimers();
+test("should execute after 2 seconds", () => {
+  setTimeout(() => {
+    $("#text").text("Updated!");
+  }, 2000);
+
+  jest.runAllTimers(); // Fast-forward time
+  expect($("#text").text()).toBe("Updated!");
+});
+🔹 4. Mocking Modules & Dependencies
+If a function relies on another module, Jest allows mocking imported functions.
+
+👉 Example:
+
+javascript
+Copy
+Edit
+jest.mock("../utils.js", () => ({
+  fetchData: jest.fn(() => Promise.resolve({ data: "mocked data" })),
+}));
+🔹 5. Snapshot Testing (UI Components)
+If you want to track UI changes, Jest can capture snapshots and compare them in future test runs.
+
+👉 Example:
+
+javascript
+Copy
+Edit
+test("renders correctly", () => {
+  document.body.innerHTML = "<div id='container'>Hello</div>";
+  expect(document.body).toMatchSnapshot();
+});
+🔹 6. Exception Handling & Edge Cases
+What happens if an element is missing?
+What if an API call fails?
+How does the UI behave with empty data?
+👉 Example:
+
+javascript
+Copy
+Edit
+test("should handle missing elements gracefully", () => {
+  expect(() => {
+    $("#nonExistent").click();
+  }).not.toThrow(); // Should not crash
+});
+🔹 7. Code Coverage & Test Reports
+You already set up coverage, but here’s a quick reminder:
+
+json
+Copy
+Edit
+"jest": {
+  "collectCoverage": true,
+  "coverageReporters": ["text", "html"]
+}
+Run:
+
+sh
+Copy
+Edit
+npm test -- --coverage
+This ensures all JavaScript files are properly tested!

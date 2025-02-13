@@ -41,6 +41,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Step 7: Run JESTS tests in headless mode
+      - name: Run JEST tests
+        run: npm test
+
+      # Step 8: Check if tests passed and proceed
+      - name: Check if tests passed
+        if: success()
+        run: echo "JEST tests passed. Proceeding with merge."
+
       # Step 7: Run Cypress tests in headless mode
       - name: Run Cypress tests
         run: npx cypress run --headless --component
