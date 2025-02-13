@@ -1,7 +1,6 @@
 $(document).ready(function () {
-
-  console.log("---loaded------------")
+  console.log("---loaded------------");
   $("#changeTextBtn").click(function () {
-      $("#displayText").text("Text changed!");
+    $("#displayText").text("Text changed!");
   });
 });

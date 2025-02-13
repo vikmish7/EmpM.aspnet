@@ -52,10 +52,11 @@
       "**/__tests__/*.test.js"
     ],
     "collectCoverage": true,
-    "collectCoverageFrom": [
-      "Scripts/basic.js",
-      "Scripts/__tests__/*.test.js"
-    ],
+"collectCoverageFrom": [
+  "Scripts/basic.js",
+  "Scripts/basjquery.js",
+  "!Scripts/__tests__/*.test.js"
+],
     "coverageReporters": [
       "text",
       "html",

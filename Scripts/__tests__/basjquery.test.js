@@ -1,32 +1,32 @@
-const $ = require('jquery');  // Import jQuery
+const $ = require('jquery');
+const { init } = require('../basjquerymodified'); // Import init function
+
 
 describe('Basic jQuery Unit Test', () => {
   let htmlContent;
 
   beforeEach(() => {
-    // Simulate the HTML content in jsdom (similar to loading index.html in Cypress)
+    // Simulate the HTML structure
     htmlContent = `
       <button id="changeTextBtn">Change Text</button>
       <div id="displayText">Original Text</div>
     `;
 
-    document.body.innerHTML = htmlContent;  // Set HTML content to the body
+    document.body.innerHTML = htmlContent; // Inject HTML into jsdom
+
+    // ✅ Manually call init() since document.ready() won't trigger in Jest
+    init();
+    // $(document).triggerHandler('ready');
+
   });
 
   it('should change text on button click', () => {
-    // Ensure the text is "Original Text" before the click
-    const displayText = $('#displayText');
-    expect(displayText.text()).toBe('Original Text');
+    expect($('#displayText').text()).toBe('Original Text');
 
-    // Simulate the button click and modify the text in the callback function
-    $('#changeTextBtn').click(function () {
-      $('#displayText').text('Text changed!');
-    });
+    // Simulate click event
+    $('#changeTextBtn').trigger('click');
 
-    // Manually trigger the click event
-    $('#changeTextBtn').trigger('click');  // Trigger the click event in jsdom
-
-    // After clicking the button, check if the text changed
-    expect(displayText.text()).toBe('Text changed!');
+    // ✅ Verify the text changed
+    expect($('#displayText').text()).toBe('Text changed!');
   });
 });
