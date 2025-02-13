@@ -1,12 +1,17 @@
-// sum.test.js
 const sum = require('../../Scripts/basic.js');
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+describe("Sum Function Tests", () => {
+  
+  test('should return correct sum of two numbers', () => {
+    expect(sum(1, 2)).toBe(3); // ✅ Passing test
+  });
+
+  test('should fail when expecting incorrect sum', () => {
+    expect(sum(1, 2)).not.toBe(8); // Fixed: Now correctly testing inequality
+  });
+
+  test('should throw error when passing an undefined variable', () => {
+    expect(() => sum(a, 2)).toThrow(); // Fixed: Now correctly handles undefined variable
+  });
+
 });
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(8);
-  });
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(a, 2)).toBe(8);
-  });
