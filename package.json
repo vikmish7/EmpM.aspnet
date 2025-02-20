@@ -52,16 +52,14 @@
       "**/__tests__/*.test.js"
     ],
     "collectCoverage": true,
-"collectCoverageFrom": [
-  "Scripts/basic.js",
-  "Scripts/crud/*.js",
-  "!Scripts/__tests__/*.test.js"
-],
+    "collectCoverageFrom": [
+      "Scripts/basic.js",
+      "Scripts/crud/*.js",
+      "!Scripts/__tests__/*.test.js"
+    ],
     "coverageReporters": [
       "text",
-      "html",
-      "lcov"
-    ],
+      "html"    ],
     "reporters": [
       "default",
       [
